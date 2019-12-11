@@ -11,7 +11,10 @@
     "start": "parcel src/index.html",
     "build-prod": "parcel build src/index.html"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "d3": "^5.14.2"
+  },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "@babel/core": "^7.7.5",
