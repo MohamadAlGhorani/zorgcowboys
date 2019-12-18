@@ -8204,19 +8204,34 @@ function runApi(url) {
     console.log(error);
   });
 }
-},{}],"scripts/index.js":[function(require,module,exports) {
+},{}],"scripts/cleaning.js":[function(require,module,exports) {
+"use strict";
+
+var _runApi = require("./runApi.js");
+
+var api = "https://mohamadalghorani.github.io/zorgcowboys-data/zorgcowboys.json";
+(0, _runApi.runApi)(api).then(function (data) {
+  return clean(data);
+});
+
+function clean(data) {
+  console.log(data);
+  var newdata = d3.nest().key(function (d) {
+    return d.concerncode;
+  }).entries(data);
+  console.log(newdata);
+}
+},{"./runApi.js":"scripts/runApi.js"}],"scripts/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../styles.scss");
 
 require("babel-polyfill");
 
-var _runApi = require("./runApi.js");
+var _cleaning = require("./cleaning.js");
 
 console.log("Hello world");
-var api = "https://mohamadalghorani.github.io/zorgcowboys-data/zorgcowboys.json";
-console.log((0, _runApi.runApi)(api));
-},{"../styles.scss":"styles.scss","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./runApi.js":"scripts/runApi.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../styles.scss":"styles.scss","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./cleaning.js":"scripts/cleaning.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -8244,7 +8259,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53910" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64784" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
