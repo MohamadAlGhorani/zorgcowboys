@@ -8221,11 +8221,12 @@ function clean(data) {
   }).key(function (d) {
     return d.jaar;
   }).entries(data).map(function (group) {
+    var lastActiveYear = group.values.length - 1;
     return {
       concerncode: group.key,
-      bedrijfsnaam: group.values[0].values[0].bedrijfsnaam,
-      plaats: group.values[0].values[0].plaats,
-      zorgSoort: checkZorg(group.values[0].values[0]),
+      bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
+      plaats: group.values[lastActiveYear].values[0].plaats,
+      zorgSoort: checkZorg(group.values[lastActiveYear].values[0]),
       jaren: group.values
     };
   });
@@ -8336,7 +8337,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56028" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
