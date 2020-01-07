@@ -11,7 +11,8 @@ runApi(api)
     )
 
 function clean(data) {
-    console.log(data)
+    cleanZorgInput(data)
+
     var newdata = d3.nest()
         .key(function (d) {
             return d.concerncode;
@@ -21,7 +22,6 @@ function clean(data) {
         })
         .entries(data)
         .map(function(group) {
-            console.log(group)
 		    return {
 		    	concerncode: group.key,
                 bedrijfsnaam: group.values[0].values[0].bedrijfsnaam,
@@ -67,5 +67,34 @@ function checkZorg(data) {
     } else if (data.thuiszorg == "ja") {
         return 3
     }
+}
 
+function cleanZorgInput(data) {
+    console.log("cleanZorgInput", data)
+    data.map(item => {
+        item.geestelijkegezondheidszorg = item.geestelijkegezondheidszorg.toLowerCase()
+        item.gehandicaptenzorg = item.gehandicaptenzorg.toLowerCase()
+        item.thuiszorg = item.thuiszorg.toLowerCase()
+        if (item.geestelijkegezondheidszorg == "na" || item.geestelijkegezondheidszorg == "no") {
+            item.geestelijkegezondheidszorg = "nee"
+        }
+        if (item.geestelijkegezondheidszorg == "yes") {
+            item.geestelijkegezondheidszorg = "ja"
+        }
+        if (item.gehandicaptenzorg == "na" || item.gehandicaptenzorg == "no") {
+            item.gehandicaptenzorg = "nee"
+        }
+        if (item.gehandicaptenzorg == "yes") {
+            item.gehandicaptenzorg = "ja"
+        }
+        if (item.thuiszorg == "na" || item.thuiszorg == "no") {
+            item.thuiszorg = "nee"
+        }
+        if (item.thuiszorg == "yes") {
+            item.thuiszorg = "ja"
+        }
+        return item
+    })
+
+    return data
 }
