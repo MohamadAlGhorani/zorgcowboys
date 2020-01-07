@@ -23,6 +23,16 @@ function clean(data) {
         .entries(data)
         .map(function (group) {
             var lastActiveYear = group.values.length - 1;
+            group.values.map(item =>
+                item.values.map(object => {
+                    delete object.concerncode,
+                        delete object.geestelijkegezondheidszorg,
+                        delete object.gehandicaptenzorg,
+                        delete object.thuiszorg,
+                        delete object.jaar
+                })
+            )
+            console.log("yessss", group.values)
             return {
                 concerncode: group.key,
                 bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
