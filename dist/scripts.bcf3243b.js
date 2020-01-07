@@ -8228,7 +8228,6 @@ function clean(data) {
         delete object.concerncode, delete object.geestelijkegezondheidszorg, delete object.gehandicaptenzorg, delete object.thuiszorg, delete object.jaar;
       });
     });
-    console.log("yessss", group.values);
     return {
       concerncode: group.key,
       bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
@@ -8272,7 +8271,6 @@ function checkZorg(data) {
 }
 
 function cleanZorgInput(data) {
-  console.log("cleanZorgInput", data);
   data.map(function (item) {
     item.geestelijkegezondheidszorg = item.geestelijkegezondheidszorg.toLowerCase();
     item.gehandicaptenzorg = item.gehandicaptenzorg.toLowerCase();

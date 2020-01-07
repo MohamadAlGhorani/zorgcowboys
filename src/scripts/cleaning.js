@@ -33,7 +33,6 @@ function clean(data) {
                         delete object.jaar
                 })
             )
-            console.log("yessss", group.values)
             return {
                 concerncode: group.key,
                 bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
@@ -78,7 +77,6 @@ function checkZorg(data) {
 }
 
 function cleanZorgInput(data) {
-    console.log("cleanZorgInput", data)
     data.map(item => {
         item.geestelijkegezondheidszorg = item.geestelijkegezondheidszorg.toLowerCase()
         item.gehandicaptenzorg = item.gehandicaptenzorg.toLowerCase()
