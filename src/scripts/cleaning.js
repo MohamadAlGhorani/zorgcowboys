@@ -23,6 +23,7 @@ function clean(data) {
         .entries(data)
         .map(function (group) {
             var lastActiveYear = group.values.length - 1;
+            var zorgSort = checkZorg(group.values[lastActiveYear].values[0])
             group.values.map(item =>
                 item.values.map(object => {
                     delete object.concerncode,
@@ -37,7 +38,7 @@ function clean(data) {
                 concerncode: group.key,
                 bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
                 plaats: group.values[lastActiveYear].values[0].plaats,
-                zorgSoort: checkZorg(group.values[lastActiveYear].values[0]),
+                zorgSoort: zorgSort,
                 jaren: group.values
             }
         })

@@ -8222,6 +8222,7 @@ function clean(data) {
     return d.jaar;
   }).entries(data).map(function (group) {
     var lastActiveYear = group.values.length - 1;
+    var zorgSort = checkZorg(group.values[lastActiveYear].values[0]);
     group.values.map(function (item) {
       return item.values.map(function (object) {
         delete object.concerncode, delete object.geestelijkegezondheidszorg, delete object.gehandicaptenzorg, delete object.thuiszorg, delete object.jaar;
@@ -8232,7 +8233,7 @@ function clean(data) {
       concerncode: group.key,
       bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
       plaats: group.values[lastActiveYear].values[0].plaats,
-      zorgSoort: checkZorg(group.values[lastActiveYear].values[0]),
+      zorgSoort: zorgSort,
       jaren: group.values
     };
   });
