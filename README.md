@@ -1,6 +1,6 @@
-# empty-project
+# Pointer - Buitenbeentjes
 
-Empty project.
+This project is about a datavis made in D3.
 
 ## Building and running on localhost
 
@@ -16,11 +16,6 @@ To run in hot module reloading mode:
 npm start
 ```
 
-To create a production build:
-
-```sh
-npm run build-prod
-```
 
 ## Running
 
