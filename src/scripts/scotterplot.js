@@ -30,17 +30,26 @@ function scotterPlot(data) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("class", "scotter-plot")
+    .attr("overflow", "visible")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var xAxis = d3.axisBottom(x).ticks(10);
+  var xAxis = d3
+    .axisBottom(x)
+    .ticks(10)
+    .tickSize(-height);
+
+  var yAxis = d3
+    .axisLeft(y)
+    .ticks(10)
+    .tickSize(-width);
+
   svg
     .append("g")
     .attr("class", "x-axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 
-  var yAxis = d3.axisLeft(y).ticks(10);
   svg
     .append("g")
     .attr("class", "y-axis")
