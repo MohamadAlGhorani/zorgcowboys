@@ -8204,10 +8204,23 @@ function runApi(url) {
     console.log(error);
   });
 }
+},{}],"scripts/scotterplot.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scotterPlot = scotterPlot;
+
+function scotterPlot(data) {
+  console.log(data);
+}
 },{}],"scripts/cleaning.js":[function(require,module,exports) {
 "use strict";
 
 var _runApi = require("./runApi.js");
+
+var _scotterplot = require("./scotterplot.js");
 
 var api = "https://mohamadalghorani.github.io/zorgcowboys-data/zorgcowboys.json";
 (0, _runApi.runApi)(api).then(function (data) {
@@ -8236,7 +8249,7 @@ function clean(data) {
       jaren: group.values
     };
   });
-  console.log(newdata);
+  (0, _scotterplot.scotterPlot)(newdata);
 }
 
 function checkZorg(data) {
@@ -8304,7 +8317,7 @@ function cleanZorgInput(data) {
   });
   return data;
 }
-},{"./runApi.js":"scripts/runApi.js"}],"scripts/index.js":[function(require,module,exports) {
+},{"./runApi.js":"scripts/runApi.js","./scotterplot.js":"scripts/scotterplot.js"}],"scripts/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../styles.scss");
@@ -8342,7 +8355,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56028" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

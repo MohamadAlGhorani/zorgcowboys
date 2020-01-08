@@ -2,6 +2,10 @@ import {
     runApi
 } from './runApi.js'
 
+import {
+    scotterPlot
+} from './scotterplot.js'
+
 var api =
     "https://mohamadalghorani.github.io/zorgcowboys-data/zorgcowboys.json";
 
@@ -41,8 +45,7 @@ function clean(data) {
                 jaren: group.values
             }
         })
-
-    console.log(newdata)
+    scotterPlot(newdata)
 }
 
 function checkZorg(data) {
