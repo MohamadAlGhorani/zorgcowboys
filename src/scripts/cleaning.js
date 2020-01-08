@@ -20,7 +20,7 @@ function clean(data) {
     var chartData = chartDataFunc(nestedData)
     var realChartData = testFunc(chartData)
     console.log(realChartData)
-    //scotterPlot(chartData)
+    scotterPlot(realChartData)
 
 }
 
@@ -28,11 +28,11 @@ function testFunc(data) {
     var obj = {}
     var arr = []
     for (const [key, value] of Object.entries(data)) {
-      obj = {
-          jaar: key,
-          entries: value
-      }
-      arr.push(obj)
+        obj = {
+            jaar: key,
+            entries: value
+        }
+        arr.push(obj)
     }
     return arr
 }
@@ -141,7 +141,7 @@ function nestDataFunc(data) {
                 entries: group.values
             }
         })
-        return nestedData
+    return nestedData
 }
 
 function chartDataFunc(data) {

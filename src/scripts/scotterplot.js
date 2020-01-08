@@ -1,5 +1,4 @@
 function scotterPlot(data) {
-  console.log(data);
   var margin = {
       top: 20,
       right: 20,
@@ -9,18 +8,18 @@ function scotterPlot(data) {
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-  var yValue = d => d.jaren[0].values[0].winst;
-  var xValue = d => d.jaren[0].values[0].omzet;
+  var yValue = d => d.winst;
+  var xValue = d => d.omzet;
 
   var xScale = d3
     .scaleLinear()
-    .domain(d3.extent(data, xValue))
+    .domain(d3.extent(data[0].entries, xValue))
     .range([0, width])
     .nice();
 
   var yScale = d3
     .scaleLinear()
-    .domain(d3.extent(data, yValue))
+    .domain(d3.extent(data[0].entries, yValue))
     .range([height, 0])
     .nice();
 
@@ -57,11 +56,13 @@ function scotterPlot(data) {
 
   svg
     .selectAll("circle")
-    .data(data)
+    .data(data[0].entries)
     .enter()
     .append("circle")
     .attr("cy", d => yScale(yValue(d)))
     .attr("cx", d => xScale(xValue(d)))
     .attr("r", "5");
 }
-export { scotterPlot };
+export {
+  scotterPlot
+};

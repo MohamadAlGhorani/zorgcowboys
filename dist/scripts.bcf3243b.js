@@ -8213,7 +8213,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.scotterPlot = scotterPlot;
 
 function scotterPlot(data) {
-  console.log(data);
   var margin = {
     top: 20,
     right: 20,
@@ -8224,21 +8223,21 @@ function scotterPlot(data) {
       height = 500 - margin.top - margin.bottom;
 
   var yValue = function yValue(d) {
-    return d.jaren[0].values[0].winst;
+    return d.winst;
   };
 
   var xValue = function xValue(d) {
-    return d.jaren[0].values[0].omzet;
+    return d.omzet;
   };
 
-  var xScale = d3.scaleLinear().domain(d3.extent(data, xValue)).range([0, width]).nice();
-  var yScale = d3.scaleLinear().domain(d3.extent(data, yValue)).range([height, 0]).nice();
+  var xScale = d3.scaleLinear().domain(d3.extent(data[0].entries, xValue)).range([0, width]).nice();
+  var yScale = d3.scaleLinear().domain(d3.extent(data[0].entries, yValue)).range([height, 0]).nice();
   var svg = d3.select("#app").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).attr("class", "scotter-plot").attr("overflow", "visible").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var xAxis = d3.axisBottom(xScale).ticks(10).tickSize(-height);
   var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-width);
   svg.append("g").attr("class", "x-axis").attr("transform", "translate(0," + height + ")").call(xAxis);
   svg.append("g").attr("class", "y-axis").call(yAxis);
-  svg.selectAll("circle").data(data).enter().append("circle").attr("cy", function (d) {
+  svg.selectAll("circle").data(data[0].entries).enter().append("circle").attr("cy", function (d) {
     return yScale(yValue(d));
   }).attr("cx", function (d) {
     return xScale(xValue(d));
@@ -8269,7 +8268,8 @@ function clean(data) {
   var nestedData = nestDataFunc(data);
   var chartData = chartDataFunc(nestedData);
   var realChartData = testFunc(chartData);
-  console.log(realChartData); //scotterPlot(chartData)
+  console.log(realChartData);
+  (0, _scotterplot.scotterPlot)(realChartData);
 }
 
 function testFunc(data) {
@@ -8471,7 +8471,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
