@@ -12,13 +12,13 @@ function scotterPlot(data) {
   var yValue = d => d.jaren[0].values[0].winst;
   var xValue = d => d.jaren[0].values[0].omzet;
 
-  var x = d3
+  var xScale = d3
     .scaleLinear()
     .domain(d3.extent(data, xValue))
     .range([0, width])
     .nice();
 
-  var y = d3
+  var yScale = d3
     .scaleLinear()
     .domain(d3.extent(data, yValue))
     .range([height, 0])
@@ -35,12 +35,12 @@ function scotterPlot(data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var xAxis = d3
-    .axisBottom(x)
+    .axisBottom(xScale)
     .ticks(10)
     .tickSize(-height);
 
   var yAxis = d3
-    .axisLeft(y)
+    .axisLeft(yScale)
     .ticks(10)
     .tickSize(-width);
 
@@ -60,8 +60,8 @@ function scotterPlot(data) {
     .data(data)
     .enter()
     .append("circle")
-    .attr("cy", d => y(yValue(d)))
-    .attr("cx", d => x(xValue(d)))
+    .attr("cy", d => yScale(yValue(d)))
+    .attr("cx", d => xScale(xValue(d)))
     .attr("r", "5");
 }
 export { scotterPlot };

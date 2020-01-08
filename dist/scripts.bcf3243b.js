@@ -8231,17 +8231,17 @@ function scotterPlot(data) {
     return d.jaren[0].values[0].omzet;
   };
 
-  var x = d3.scaleLinear().domain(d3.extent(data, xValue)).range([0, width]).nice();
-  var y = d3.scaleLinear().domain(d3.extent(data, yValue)).range([height, 0]).nice();
+  var xScale = d3.scaleLinear().domain(d3.extent(data, xValue)).range([0, width]).nice();
+  var yScale = d3.scaleLinear().domain(d3.extent(data, yValue)).range([height, 0]).nice();
   var svg = d3.select("#app").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).attr("class", "scotter-plot").attr("overflow", "visible").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  var xAxis = d3.axisBottom(x).ticks(10).tickSize(-height);
-  var yAxis = d3.axisLeft(y).ticks(10).tickSize(-width);
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickSize(-height);
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-width);
   svg.append("g").attr("class", "x-axis").attr("transform", "translate(0," + height + ")").call(xAxis);
   svg.append("g").attr("class", "y-axis").call(yAxis);
   svg.selectAll("circle").data(data).enter().append("circle").attr("cy", function (d) {
-    return y(yValue(d));
+    return yScale(yValue(d));
   }).attr("cx", function (d) {
-    return x(xValue(d));
+    return xScale(xValue(d));
   }).attr("r", "5");
 }
 },{}],"scripts/cleaning.js":[function(require,module,exports) {
