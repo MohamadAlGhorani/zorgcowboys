@@ -8258,27 +8258,9 @@ var api = "https://mohamadalghorani.github.io/zorgcowboys-data/zorgcowboys.json"
 
 function clean(data) {
   cleanZorgInput(data);
-  var newdata = d3.nest().key(function (d) {
-    return d.concerncode;
-  }).key(function (d) {
-    return d.jaar;
-  }).entries(data).map(function (group) {
-    var lastActiveYear = group.values.length - 1;
-    var zorgSort = checkZorg(group.values[lastActiveYear].values[0]);
-    group.values.map(function (item) {
-      return item.values.map(function (object) {
-        delete object.concerncode, delete object.geestelijkegezondheidszorg, delete object.gehandicaptenzorg, delete object.thuiszorg, delete object.jaar;
-      });
-    });
-    return {
-      concerncode: group.key,
-      bedrijfsnaam: group.values[lastActiveYear].values[0].bedrijfsnaam,
-      plaats: group.values[lastActiveYear].values[0].plaats,
-      zorgSoort: zorgSort,
-      jaren: group.values
-    };
-  });
-  (0, _scotterplot.scotterPlot)(newdata);
+  var nestedData = nestDataFunc(data);
+  var chartData = chartDataFunc(nestedData);
+  console.log(chartData); //scotterPlot(chartData)
 }
 
 function checkZorg(data) {
@@ -8346,6 +8328,82 @@ function cleanZorgInput(data) {
   });
   return data;
 }
+
+function nestDataFunc(data) {
+  var nestedData = d3.nest().key(function (d) {
+    return d.jaar;
+  }).key(function (d) {
+    return d.concerncode;
+  }).entries(data).map(function (group) {
+    var lastActiveYear = group.values.length - 1;
+    var test = {};
+    var plaats;
+    group.values.map(function (item) {// item.values.map(object => {
+      //         // delete object.plaats,
+      //         // delete object.bedrijfsnaam,
+      //         // delete object.concerncode,
+      //         // delete object.geestelijkegezondheidszorg,
+      //         // delete object.gehandicaptenzorg,
+      //         // delete object.thuiszorg
+      //         //
+      //         // if (object.jaar < 2017){
+      //         //     delete object.fte,
+      //         //     delete object.omzet_fte
+      //         //     delete object.jaar
+      //         // } else {
+      //         //     delete object.jaar
+      //         // }
+      //         plaats = object.plaats
+      // })
+      // test = {
+      //     concerncode: item.key,
+      //     plaats: plaats
+      // }
+    });
+    return {
+      jaar: group.key,
+      entries: group.values
+    };
+  });
+  return nestedData;
+}
+
+function chartDataFunc(data) {
+  return data.reduce(function (jarenObj, item) {
+    jarenObj[item.jaar] = item.entries.map(function (entry) {
+      return {
+        concerncode: entry.key,
+        plaats: entry.values[0].plaats,
+        naam: entry.values[0].bedrijfsnaam,
+        zorgsoort: checkZorg(entry.values[0]),
+        omzet: entry.values[0].omzet,
+        fte: checkFte(entry.values[0]),
+        omzet_fte: checkFteOmzet(entry.values[0]),
+        perc_loon: entry.values[0].perc_loon,
+        perc_winst: entry.values[0].perc_winst,
+        winst: entry.values[0].winst,
+        personeelskosten: entry.values[0].personeelskostentotaal
+      };
+    });
+    return jarenObj;
+  }, {});
+}
+
+function checkFte(data) {
+  if (data.jaar > 2016) {
+    return data.fte;
+  } else {
+    return null;
+  }
+}
+
+function checkFteOmzet(data) {
+  if (data.jaar > 2016) {
+    return data.omzet_fte;
+  } else {
+    return null;
+  }
+} // jaren['2011']
 },{"./runApi.js":"scripts/runApi.js","./scotterplot.js":"scripts/scotterplot.js"}],"scripts/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -8384,7 +8442,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
