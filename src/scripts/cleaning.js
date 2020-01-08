@@ -18,9 +18,23 @@ function clean(data) {
     cleanZorgInput(data)
     var nestedData = nestDataFunc(data)
     var chartData = chartDataFunc(nestedData)
-    console.log(chartData)
+    var realChartData = testFunc(chartData)
+    console.log(realChartData)
     //scotterPlot(chartData)
 
+}
+
+function testFunc(data) {
+    var obj = {}
+    var arr = []
+    for (const [key, value] of Object.entries(data)) {
+      obj = {
+          jaar: key,
+          entries: value
+      }
+      arr.push(obj)
+    }
+    return arr
 }
 
 function checkZorg(data) {
@@ -144,7 +158,8 @@ function chartDataFunc(data) {
                 perc_loon: entry.values[0].perc_loon,
                 perc_winst: entry.values[0].perc_winst,
                 winst: entry.values[0].winst,
-                personeelskosten: entry.values[0].personeelskostentotaal
+                personeelskosten: entry.values[0].personeelskostentotaal,
+                jaar: entry.values[0].jaar
             }
         })
 
