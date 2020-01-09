@@ -88,4 +88,12 @@ svg {
   margin: 0 auto;
 }
 
+.tick line {
+  opacity: 0.3;
+}
+
+circle {
+  opacity: 0.5;
+}
+
 /*# sourceMappingURL=/scripts.bcf3243b.css.map */
