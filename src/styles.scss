@@ -162,5 +162,13 @@ svg {
 }
 
 circle {
-    opacity: 0.5;
+    opacity: 1;
+
+    &.bg-one {fill: $geel;}
+    &.bg-two {fill: $rood;}
+    &.bg-three {fill: $licht-blauw;}
+    &.bg-four {fill: $paars;}
+    &.bg-five {fill: lightblue;}
+    &.bg-six {fill: lightgreen;}
+    &.bg-seven {fill: lightpink;}
 }
