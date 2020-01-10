@@ -136,7 +136,28 @@ svg {
 }
 
 circle {
-  opacity: 0.5;
+  opacity: 1;
+}
+circle.bg-one {
+  fill: #faff2e;
+}
+circle.bg-two {
+  fill: #f65645;
+}
+circle.bg-three {
+  fill: #1beaae;
+}
+circle.bg-four {
+  fill: #6b38e8;
+}
+circle.bg-five {
+  fill: lightblue;
+}
+circle.bg-six {
+  fill: lightgreen;
+}
+circle.bg-seven {
+  fill: lightpink;
 }
 
 /*# sourceMappingURL=/scripts.bcf3243b.css.map */

@@ -77,6 +77,19 @@ function scotterPlot(data) {
     .data(data[0].entries)
     .enter()
     .append("circle")
+    .attr("class", function(d) {
+		            if (d.zorgsoort == 1) {return "bg-one"}
+		            else if (d.zorgsoort == 2) {return "bg-two"}
+                    else if (d.zorgsoort == 3) {return "bg-three"}
+                    else if (d.zorgsoort == 4) {return "bg-four"}
+                    else if (d.zorgsoort == 5) {return "bg-five"}
+                    else if (d.zorgsoort == 6) {return "bg-six"}
+                    else if (d.zorgsoort == 7) {return "bg-seven"}
+		        ;})
+    .style("opacity", function(d) {
+            		if (typeof d.omzet != "number") {return 0}
+                    else if (typeof d.winst != "number") {return 0}
+                ;})
     .attr("cy", d => yScale(yValue(d)))
     .attr("cx", d => xScale(xValue(d)))
     .attr("r", "5");

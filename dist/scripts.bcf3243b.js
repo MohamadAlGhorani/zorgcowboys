@@ -8317,7 +8317,33 @@ function scotterPlot(data) {
   var gX = svg.append("g").attr("class", "x-axis").attr("transform", "translate(0," + height + ")").call(xAxis);
   var gY = svg.append("g").attr("class", "y-axis").call(yAxis);
   var pointgroup = svg.append('g').attr("clip-path", "url(#clip)").classed("points_g", true);
-  var points = pointgroup.selectAll("circle").data(data[0].entries).enter().append("circle").attr("cy", function (d) {
+  var points = pointgroup.selectAll("circle").data(data[0].entries).enter().append("circle").attr("class", function (d) {
+    if (d.zorgsoort == 1) {
+      return "bg-one";
+    } else if (d.zorgsoort == 2) {
+      return "bg-two";
+    } else if (d.zorgsoort == 3) {
+      return "bg-three";
+    } else if (d.zorgsoort == 4) {
+      return "bg-four";
+    } else if (d.zorgsoort == 5) {
+      return "bg-five";
+    } else if (d.zorgsoort == 6) {
+      return "bg-six";
+    } else if (d.zorgsoort == 7) {
+      return "bg-seven";
+    }
+
+    ;
+  }).style("opacity", function (d) {
+    if (typeof d.omzet != "number") {
+      return 0;
+    } else if (typeof d.winst != "number") {
+      return 0;
+    }
+
+    ;
+  }).attr("cy", function (d) {
     return yScale(yValue(d));
   }).attr("cx", function (d) {
     return xScale(xValue(d));
