@@ -8204,6 +8204,81 @@ function runApi(url) {
     console.log(error);
   });
 }
+},{}],"scripts/dropDownMenu.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.genOptionsForDropdownMenu = genOptionsForDropdownMenu;
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/*
+
+  The DOM structure looks like this:
+
+  <select>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+
+*/
+// export const dropdownMenu = (selection, props) => {
+//     const {
+//         options,
+//         onOptionClicked,
+//         selectedOption
+//     } = props;
+//     let select = selection.selectAll('select').data([null]);
+//     select = select.enter().append('select')
+//         .merge(select)
+//         .on('change', function () {
+//             onOptionClicked(this.value);
+//         });
+//     const option = select.selectAll('option').data(options);
+// option.enter().append('option')
+//     .merge(option)
+//     .attr('value', d => d)
+//     .property('selected', d => d === selectedOption)
+//     .text(d => d);
+// };
+function genOptionsForDropdownMenu(data) {
+  console.log(Object.keys(data[0].entries[0]));
+  var selectMenu = d3.select("#app").append('select');
+  var option = selectMenu.selectAll("option").data(checkKeys(data)).enter().append('option').attr('value', function (d) {
+    return d;
+  }).text(function (d) {
+    return d;
+  });
+}
+
+function checkKeys(data) {
+  // console.log(data[0].entries[0])
+  var newArr = [];
+
+  for (var _i = 0, _Object$entries = Object.entries(data[0].entries[0]); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        value = _Object$entries$_i[1];
+
+    console.log(key, value);
+
+    if (typeof value != 'number') {} else if (key == "jaar" || key == "zorgsoort") {} else {
+      newArr.push(key);
+    }
+  }
+
+  return newArr;
+}
 },{}],"scripts/scotterplot.js":[function(require,module,exports) {
 "use strict";
 
@@ -8211,6 +8286,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.scotterPlot = scotterPlot;
+
+var _dropDownMenu = require("./dropDownMenu.js");
 
 function scotterPlot(data) {
   console.log(data[0].entries);
@@ -8262,8 +8339,10 @@ function scotterPlot(data) {
       return new_xScale(xValue(d));
     });
   }
+
+  (0, _dropDownMenu.genOptionsForDropdownMenu)(data);
 }
-},{}],"scripts/cleaning.js":[function(require,module,exports) {
+},{"./dropDownMenu.js":"scripts/dropDownMenu.js"}],"scripts/cleaning.js":[function(require,module,exports) {
 "use strict";
 
 var _runApi = require("./runApi.js");
@@ -8491,7 +8570,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50541" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

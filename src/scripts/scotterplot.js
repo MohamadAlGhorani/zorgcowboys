@@ -1,3 +1,7 @@
+import {
+  genOptionsForDropdownMenu
+} from './dropDownMenu.js'
+
 function scotterPlot(data) {
   console.log(data[0].entries);
   var margin = {
@@ -35,9 +39,9 @@ function scotterPlot(data) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append("defs").append("clipPath")
+  svg.append("defs").append("clipPath")
     .attr("id", "clip")
-  .append("rect")
+    .append("rect")
     .attr("width", width)
     .attr("height", height);
 
@@ -62,10 +66,10 @@ function scotterPlot(data) {
     .attr("class", "y-axis")
     .call(yAxis);
 
-var pointgroup =
-svg.append('g')
-.attr("clip-path", "url(#clip)")
-  .classed("points_g", true);
+  var pointgroup =
+    svg.append('g')
+    .attr("clip-path", "url(#clip)")
+    .classed("points_g", true);
 
   var points =
     pointgroup
@@ -106,6 +110,7 @@ svg.append('g')
       .attr("cy", d => new_yScale(yValue(d)))
       .attr("cx", d => new_xScale(xValue(d)))
   }
+  genOptionsForDropdownMenu(data)
 }
 export {
   scotterPlot
