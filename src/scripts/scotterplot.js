@@ -9,6 +9,8 @@ function scotterPlot(data) {
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+
+
   var yValue = d => d.winst;
   var xValue = d => d.omzet;
 
@@ -33,6 +35,12 @@ function scotterPlot(data) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    svg.append("defs").append("clipPath")
+    .attr("id", "clip")
+  .append("rect")
+    .attr("width", width)
+    .attr("height", height);
+
   var xAxis = d3
     .axisBottom(xScale)
     .ticks(10)
@@ -54,9 +62,13 @@ function scotterPlot(data) {
     .attr("class", "y-axis")
     .call(yAxis);
 
+var pointgroup =
+svg.append('g')
+.attr("clip-path", "url(#clip)")
+  .classed("points_g", true);
 
   var points =
-    svg
+    pointgroup
     .selectAll("circle")
     .data(data[0].entries)
     .enter()
@@ -68,7 +80,7 @@ function scotterPlot(data) {
 
   // Pan and zoom
   var zoom = d3.zoom()
-    .scaleExtent([.5, 20])
+    .scaleExtent([.5, 100])
     .extent([
       [0, 0],
       [width, height]
