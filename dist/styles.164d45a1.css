@@ -77,10 +77,53 @@
   font-family: "zilla_slabregular", arial;
 }
 
+body {
+  background: #f2f2f2;
+}
+
 h1 {
   font-family: "zilla_slabbold";
   color: #1d2939;
   background-color: #e6e6e6;
+}
+
+h2 {
+  color: #1beaae;
+}
+
+header {
+  background-color: #e6e6e6;
+  display: flex;
+  height: 55px;
+}
+header .logo {
+  background-color: #d8cedb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  font-size: 30px;
+}
+header .right-header {
+  display: flex;
+  background: #1d2939;
+  width: 90%;
+  font-size: 22px;
+  align-items: center;
+  padding-left: 75px;
+  position: relative;
+  overflow: hidden;
+}
+header .right-header:before {
+  content: "";
+  position: absolute;
+  height: 55px;
+  width: 55px;
+  left: 0;
+  top: 0;
+  border-style: solid;
+  border-width: 55px 0 0 55px;
+  border-color: transparent transparent transparent #1beaae;
 }
 
 svg {

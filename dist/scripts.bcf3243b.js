@@ -8234,17 +8234,19 @@ function scotterPlot(data) {
   var xScale = d3.scaleLinear().domain(d3.extent(data[0].entries, xValue)).range([0, width]).nice();
   var yScale = d3.scaleLinear().domain(d3.extent(data[0].entries, yValue)).range([height, 0]).nice();
   var svg = d3.select("#app").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).attr("class", "scotter-plot").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  svg.append("defs").append("clipPath").attr("id", "clip").append("rect").attr("width", width).attr("height", height);
   var xAxis = d3.axisBottom(xScale).ticks(10).tickSize(-height);
   var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-width);
   var gX = svg.append("g").attr("class", "x-axis").attr("transform", "translate(0," + height + ")").call(xAxis);
   var gY = svg.append("g").attr("class", "y-axis").call(yAxis);
-  var points = svg.selectAll("circle").data(data[0].entries).enter().append("circle").attr("cy", function (d) {
+  var pointgroup = svg.append('g').attr("clip-path", "url(#clip)").classed("points_g", true);
+  var points = pointgroup.selectAll("circle").data(data[0].entries).enter().append("circle").attr("cy", function (d) {
     return yScale(yValue(d));
   }).attr("cx", function (d) {
     return xScale(xValue(d));
   }).attr("r", "5"); // Pan and zoom
 
-  var zoom = d3.zoom().scaleExtent([.5, 20]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
+  var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
   svg.append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
 
   function zoomed() {
@@ -8489,7 +8491,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50541" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
