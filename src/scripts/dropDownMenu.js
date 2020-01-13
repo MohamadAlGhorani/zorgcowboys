@@ -13,7 +13,6 @@
 
 // export const dropdownMenu = (selection, props) => {
 //     const {
-//         options,
 //         onOptionClicked,
 //         selectedOption
 //     } = props;
@@ -25,17 +24,17 @@
 //             onOptionClicked(this.value);
 //         });
 
-//     const option = select.selectAll('option').data(options);
-// option.enter().append('option')
-//     .merge(option)
-//     .attr('value', d => d)
-//     .property('selected', d => d === selectedOption)
-//     .text(d => d);
+//     const option = select.selectAll('option').data(checkKeys(data));
+//     option.enter().append('option')
+//         .merge(option)
+//         .attr('value', d => d)
+//         .property('selected', d => d === selectedOption)
+//         .text(d => d);
 // };
 
-export function genOptionsForDropdownMenu(data) {
-    console.log(Object.keys(data[0].entries[0]))
-    var selectMenu = d3.select("#app").append('select')
+export function genOptionsForDropdownMenu(data, menuClass) {
+    // console.log(Object.keys(data[0].entries[0]))
+    var selectMenu = d3.select("#app").append('select').attr("class", menuClass)
     var option =
         selectMenu
         .selectAll("option")
@@ -43,6 +42,8 @@ export function genOptionsForDropdownMenu(data) {
         .enter().append('option')
         .attr('value', d => d)
         .text(d => d);
+
+    return selectMenu
 }
 
 function checkKeys(data) {

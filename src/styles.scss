@@ -107,6 +107,7 @@ h1 {
     color: $text-color;
     background-color: $grijs;
 }
+
 h2 {
     color: $licht-blauw
 }
@@ -125,10 +126,11 @@ header {
         width: 10%;
         font-size: 30px;
     }
+
     .right-header {
         display: flex;
         background: $text-color;
-        width:90%;
+        width: 90%;
         font-size: 22px;
         align-items: center;
         padding-left: 75px;
@@ -143,8 +145,8 @@ header {
             left: 0;
             top: 0;
             border-style: solid;
-border-width: 55px 0 0 55px;
-border-color: transparent transparent transparent $licht-blauw;
+            border-width: 55px 0 0 55px;
+            border-color: transparent transparent transparent $licht-blauw;
         }
     }
 }
@@ -164,11 +166,31 @@ svg {
 circle {
     opacity: 1;
 
-    &.bg-one {fill: $geel;}
-    &.bg-two {fill: $rood;}
-    &.bg-three {fill: $licht-blauw;}
-    &.bg-four {fill: $paars;}
-    &.bg-five {fill: lightblue;}
-    &.bg-six {fill: lightgreen;}
-    &.bg-seven {fill: lightpink;}
+    &.bg-one {
+        fill: $geel;
+    }
+
+    &.bg-two {
+        fill: $rood;
+    }
+
+    &.bg-three {
+        fill: $licht-blauw;
+    }
+
+    &.bg-four {
+        fill: $paars;
+    }
+
+    &.bg-five {
+        fill: lightblue;
+    }
+
+    &.bg-six {
+        fill: lightgreen;
+    }
+
+    &.bg-seven {
+        fill: lightpink;
+    }
 }

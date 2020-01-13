@@ -2,21 +2,29 @@ import {
   genOptionsForDropdownMenu
 } from './dropDownMenu.js'
 
+var margin = {
+    top: 30,
+    right: 50,
+    bottom: 30,
+    left: 50
+  },
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
 function scotterPlot(data) {
   console.log(data[0].entries);
-  var margin = {
-      top: 30,
-      right: 50,
-      bottom: 30,
-      left: 50
-    },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
 
+  var xMenuClass = "xMenu";
+  var yMenuClass = "yMenu";
+  genOptionsForDropdownMenu(data, xMenuClass)
+  genOptionsForDropdownMenu(data, yMenuClass)
+  var xMenuValue = document.querySelector(".xMenu").value;
+  var yMenuValue = document.querySelector(".yMenu").value;
+  var xMenu = document.querySelector(".xMenu");
+  var yMenu = document.querySelector(".yMenu");
 
-
-  var yValue = d => d.winst;
-  var xValue = d => d.omzet;
+  var yValue = d => d[yMenuValue];
+  var xValue = d => d[xMenuValue];
 
   var xScale = d3
     .scaleLinear()
@@ -77,19 +85,30 @@ function scotterPlot(data) {
     .data(data[0].entries)
     .enter()
     .append("circle")
-    .attr("class", function(d) {
-		            if (d.zorgsoort == 1) {return "bg-one"}
-		            else if (d.zorgsoort == 2) {return "bg-two"}
-                    else if (d.zorgsoort == 3) {return "bg-three"}
-                    else if (d.zorgsoort == 4) {return "bg-four"}
-                    else if (d.zorgsoort == 5) {return "bg-five"}
-                    else if (d.zorgsoort == 6) {return "bg-six"}
-                    else if (d.zorgsoort == 7) {return "bg-seven"}
-		        ;})
-    .style("opacity", function(d) {
-            		if (typeof d.omzet != "number") {return 0}
-                    else if (typeof d.winst != "number") {return 0}
-                ;})
+    .attr("class", function (d) {
+      if (d.zorgsoort == 1) {
+        return "bg-one"
+      } else if (d.zorgsoort == 2) {
+        return "bg-two"
+      } else if (d.zorgsoort == 3) {
+        return "bg-three"
+      } else if (d.zorgsoort == 4) {
+        return "bg-four"
+      } else if (d.zorgsoort == 5) {
+        return "bg-five"
+      } else if (d.zorgsoort == 6) {
+        return "bg-six"
+      } else if (d.zorgsoort == 7) {
+        return "bg-seven"
+      };
+    })
+    .style("opacity", function (d) {
+      if (typeof d.omzet != "number") {
+        return 0
+      } else if (typeof d.winst != "number") {
+        return 0
+      };
+    })
     .attr("cy", d => yScale(yValue(d)))
     .attr("cx", d => xScale(xValue(d)))
     .attr("r", "5");
@@ -123,8 +142,219 @@ function scotterPlot(data) {
       .attr("cy", d => new_yScale(yValue(d)))
       .attr("cx", d => new_xScale(xValue(d)))
   }
-  genOptionsForDropdownMenu(data)
+
+  xMenu.addEventListener('change', function () {
+    var xMenuValue = document.querySelector(".xMenu").value;
+    var yMenuValue = document.querySelector(".yMenu").value;
+
+    console.log(yMenuValue)
+    console.log(xMenuValue)
+
+    var yValue = d => d[yMenuValue];
+    var xValue = d => d[xMenuValue];
+
+    var xScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data[0].entries, xValue))
+      .range([0, width])
+      .nice();
+
+    var yScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data[0].entries, yValue))
+      .range([height, 0])
+      .nice();
+
+    var xAxis = d3
+      .axisBottom(xScale)
+      .ticks(10)
+      .tickSize(-height);
+
+    var yAxis = d3
+      .axisLeft(yScale)
+      .ticks(10)
+      .tickSize(-width);
+
+    var gX = d3.select(".x-axis")
+      .call(xAxis);
+
+    var gY = d3.select(".y-axis")
+      .call(yAxis);
+
+    var points =
+      d3.selectAll("circle")
+      .data(data[0].entries)
+
+    points.enter()
+      .append("circle")
+      .merge(points)
+      .attr("class", function (d) {
+        if (d.zorgsoort == 1) {
+          return "bg-one"
+        } else if (d.zorgsoort == 2) {
+          return "bg-two"
+        } else if (d.zorgsoort == 3) {
+          return "bg-three"
+        } else if (d.zorgsoort == 4) {
+          return "bg-four"
+        } else if (d.zorgsoort == 5) {
+          return "bg-five"
+        } else if (d.zorgsoort == 6) {
+          return "bg-six"
+        } else if (d.zorgsoort == 7) {
+          return "bg-seven"
+        };
+      })
+      .style("opacity", function (d) {
+        if (typeof d.omzet != "number") {
+          return 0
+        } else if (typeof d.winst != "number") {
+          return 0
+        };
+      })
+      .attr("cy", d => yScale(yValue(d)))
+      .attr("cx", d => xScale(xValue(d)))
+      .attr("r", "5");
+    points.exit().remove();
+
+    // Pan and zoom
+    var zoom = d3.zoom()
+      .scaleExtent([.5, 100])
+      .extent([
+        [0, 0],
+        [width, height]
+      ])
+      .on("zoom", zoomed);
+
+    d3.select("svg").append("rect")
+      .attr("width", width)
+      .attr("height", height)
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .call(zoom);
+
+    function zoomed() {
+      // create new scale ojects based on event
+      var new_xScale = d3.event.transform.rescaleX(xScale);
+      var new_yScale = d3.event.transform.rescaleY(yScale);
+      // update axes
+      gX.call(xAxis.scale(new_xScale));
+      gY.call(yAxis.scale(new_yScale));
+      points.data(data[0].entries)
+        .attr("cy", d => new_yScale(yValue(d)))
+        .attr("cx", d => new_xScale(xValue(d)))
+    }
+
+
+  })
+  yMenu.addEventListener('change', function () {
+    var xMenuValue = document.querySelector(".xMenu").value;
+    var yMenuValue = document.querySelector(".yMenu").value;
+
+    console.log(yMenuValue)
+    console.log(xMenuValue)
+
+    var yValue = d => d[yMenuValue];
+    var xValue = d => d[xMenuValue];
+
+    var xScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data[0].entries, xValue))
+      .range([0, width])
+      .nice();
+
+    var yScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data[0].entries, yValue))
+      .range([height, 0])
+      .nice();
+
+    var xAxis = d3
+      .axisBottom(xScale)
+      .ticks(10)
+      .tickSize(-height);
+
+    var yAxis = d3
+      .axisLeft(yScale)
+      .ticks(10)
+      .tickSize(-width);
+
+    var gX = d3.select(".x-axis")
+      .call(xAxis);
+
+    var gY = d3.select(".y-axis")
+      .call(yAxis);
+
+    var points =
+      d3.selectAll("circle")
+      .data(data[0].entries)
+
+    points.enter()
+      .append("circle")
+      .merge(points)
+      .attr("class", function (d) {
+        if (d.zorgsoort == 1) {
+          return "bg-one"
+        } else if (d.zorgsoort == 2) {
+          return "bg-two"
+        } else if (d.zorgsoort == 3) {
+          return "bg-three"
+        } else if (d.zorgsoort == 4) {
+          return "bg-four"
+        } else if (d.zorgsoort == 5) {
+          return "bg-five"
+        } else if (d.zorgsoort == 6) {
+          return "bg-six"
+        } else if (d.zorgsoort == 7) {
+          return "bg-seven"
+        };
+      })
+      .style("opacity", function (d) {
+        if (typeof d.omzet != "number") {
+          return 0
+        } else if (typeof d.winst != "number") {
+          return 0
+        };
+      })
+      .attr("cy", d => yScale(yValue(d)))
+      .attr("cx", d => xScale(xValue(d)))
+      .attr("r", "5");
+    points.exit().remove();
+
+    // Pan and zoom
+    var zoom = d3.zoom()
+      .scaleExtent([.5, 100])
+      .extent([
+        [0, 0],
+        [width, height]
+      ])
+      .on("zoom", zoomed);
+
+    d3.select("svg").append("rect")
+      .attr("width", width)
+      .attr("height", height)
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .call(zoom);
+
+    function zoomed() {
+      // create new scale ojects based on event
+      var new_xScale = d3.event.transform.rescaleX(xScale);
+      var new_yScale = d3.event.transform.rescaleY(yScale);
+      // update axes
+      gX.call(xAxis.scale(new_xScale));
+      gY.call(yAxis.scale(new_yScale));
+      points.data(data[0].entries)
+        .attr("cy", d => new_yScale(yValue(d)))
+        .attr("cx", d => new_xScale(xValue(d)))
+    }
+
+  })
 }
+
+
 export {
   scotterPlot
 };
