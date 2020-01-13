@@ -222,4 +222,29 @@ circle.bg-seven {
   pointer-events: all;
 }
 
+.legenda {
+  position: absolute;
+  right: -120px;
+  transform: scale(0.7) translateY(-50%);
+  top: 45%;
+}
+.legenda h5 {
+  font-size: 1.6em;
+}
+.legenda span {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  display: inline-block;
+}
+.legenda span.geestelijk {
+  background: #faff2e;
+}
+.legenda span.gehandicapten {
+  background: #f65645;
+}
+.legenda span.thuiszorg {
+  background: #1beaae;
+}
+
 /*# sourceMappingURL=/scripts.bcf3243b.css.map */
