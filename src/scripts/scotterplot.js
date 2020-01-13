@@ -4,12 +4,12 @@ import {
 
 var margin = {
     top: 30,
-    right: 50,
+    right: 100,
     bottom: 30,
-    left: 50
+    left: 100
   },
-  width = 960 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  width = 1300 - margin.left - margin.right,
+  height = 700 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
   console.log(data[0].entries);
@@ -292,7 +292,6 @@ function scotterPlot(data) {
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-      .lower()
       .call(zoom);
 
     function zoomed() {
@@ -424,7 +423,6 @@ function scotterPlot(data) {
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-      .lower()
       .call(zoom);
 
     function zoomed() {
