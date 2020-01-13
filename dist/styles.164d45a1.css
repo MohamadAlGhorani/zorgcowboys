@@ -197,7 +197,7 @@ circle.bg-seven {
 }
 
 .select-overlay {
-  width: 1200px;
+  width: 1100px;
   height: 500px;
   position: absolute;
   left: 50%;
@@ -224,7 +224,7 @@ circle.bg-seven {
 
 .legenda {
   position: absolute;
-  right: -120px;
+  right: -105px;
   transform: scale(0.7) translateY(-50%);
   top: 45%;
 }

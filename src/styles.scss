@@ -237,7 +237,7 @@ circle {
 }
 
 .select-overlay {
-    width: 1200px;
+    width: 1100px;
     height: 500px;
     position: absolute;
     left: 50%;
@@ -266,23 +266,28 @@ circle {
 
 .legenda {
     position: absolute;
-    right: -120px;
+    right: -105px;
     transform: scale(.7) translateY(-50%);
     top: 45%;
+
     h5 {
         font-size: 1.6em;
     }
+
     span {
         width: 25px;
         height: 25px;
         border-radius: 20px;
         display: inline-block;
+
         &.geestelijk {
             background: $geel;
         }
+
         &.gehandicapten {
             background: $rood;
         }
+
         &.thuiszorg {
             background: $licht-blauw;
         }

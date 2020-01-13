@@ -8264,7 +8264,7 @@ var margin = {
   bottom: 30,
   left: 100
 },
-    width = 1200 - margin.left - margin.right,
+    width = 1100 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
@@ -8738,7 +8738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60534" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

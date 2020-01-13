@@ -8,7 +8,7 @@ var margin = {
     bottom: 30,
     left: 100
   },
-  width = 1200 - margin.left - margin.right,
+  width = 1100 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
@@ -141,7 +141,7 @@ function scotterPlot(data) {
         );
     });
 
-    points.transition()
+  points.transition()
     .duration(500)
     .attr("cy", d => yScale(yValue(d)))
     .attr("cx", d => xScale(xValue(d)))
@@ -275,7 +275,7 @@ function scotterPlot(data) {
           );
       });
 
-      points.transition()
+    points.transition()
       .duration(500)
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
@@ -409,7 +409,7 @@ function scotterPlot(data) {
           );
       });
 
-      points.transition()
+    points.transition()
       .duration(500)
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
