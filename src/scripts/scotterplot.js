@@ -8,8 +8,8 @@ var margin = {
     bottom: 30,
     left: 100
   },
-  width = 1300 - margin.left - margin.right,
-  height = 700 - margin.top - margin.bottom;
+  width = 1200 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
   console.log(data[0].entries);
@@ -161,7 +161,6 @@ function scotterPlot(data) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .attr('transform', 'translate(0,0)')
-    .style("z-index", 1)
     .lower()
     .call(zoom);
 
@@ -291,7 +290,7 @@ function scotterPlot(data) {
       .attr("height", height)
       .style("fill", "none")
       .style("pointer-events", "all")
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .attr('transform', 'translate(0,0)')
       .call(zoom);
 
     function zoomed() {
@@ -422,8 +421,9 @@ function scotterPlot(data) {
       .attr("height", height)
       .style("fill", "none")
       .style("pointer-events", "all")
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .attr('transform', 'translate(0,0)')
       .call(zoom);
+
 
     function zoomed() {
       // create new scale ojects based on event

@@ -8220,36 +8220,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-/*
-
-  The DOM structure looks like this:
-
-  <select>
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select>
-
-*/
-// export const dropdownMenu = (selection, props) => {
-//     const {
-//         onOptionClicked,
-//         selectedOption
-//     } = props;
-//     let select = selection.selectAll('select').data([null]);
-//     select = select.enter().append('select')
-//         .merge(select)
-//         .on('change', function () {
-//             onOptionClicked(this.value);
-//         });
-//     const option = select.selectAll('option').data(checkKeys(data));
-//     option.enter().append('option')
-//         .merge(option)
-//         .attr('value', d => d)
-//         .property('selected', d => d === selectedOption)
-//         .text(d => d);
-// };
 function genOptionsForDropdownMenu(data, menuClass) {
   // console.log(Object.keys(data[0].entries[0]))
   var selectMenu = d3.select("#app").append('select').attr("class", menuClass);
@@ -8294,8 +8264,8 @@ var margin = {
   bottom: 30,
   left: 100
 },
-    width = 1300 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 1200 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
   console.log(data[0].entries);
@@ -8364,7 +8334,7 @@ function scotterPlot(data) {
   }); // Pan and zoom
 
   var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-  svg.append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').style("z-index", 1).lower().call(zoom);
+  svg.append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').lower().call(zoom);
 
   function zoomed() {
     // create new scale ojects based on event
@@ -8438,7 +8408,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
@@ -8512,7 +8482,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
