@@ -8408,7 +8408,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').call(zoom);
+    d3.select("svg").style("pointer-events", "all").attr('transform', 'translate(0,0)').lower().call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
@@ -8482,7 +8482,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').call(zoom);
+    d3.select("svg").style("pointer-events", "all").attr('transform', 'translate(0,0)').lower().call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event

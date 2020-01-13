@@ -285,12 +285,10 @@ function scotterPlot(data) {
       ])
       .on("zoom", zoomed);
 
-    d3.select("svg").append("rect")
-      .attr("width", width)
-      .attr("height", height)
-      .style("fill", "none")
+    d3.select("svg")
       .style("pointer-events", "all")
       .attr('transform', 'translate(0,0)')
+      .lower()
       .call(zoom);
 
     function zoomed() {
@@ -416,12 +414,10 @@ function scotterPlot(data) {
       ])
       .on("zoom", zoomed);
 
-    d3.select("svg").append("rect")
-      .attr("width", width)
-      .attr("height", height)
-      .style("fill", "none")
+    d3.select("svg")
       .style("pointer-events", "all")
       .attr('transform', 'translate(0,0)')
+      .lower()
       .call(zoom);
 
 
