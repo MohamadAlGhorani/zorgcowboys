@@ -50,7 +50,7 @@ function checkKeys(data) {
     // console.log(data[0].entries[0])
     var newArr = []
     for (const [key, value] of Object.entries(data[0].entries[0])) {
-        console.log(key, value)
+        // console.log(key, value)
         if (typeof value != 'number') {
 
         } else if (key == "jaar" || key == "zorgsoort") {
