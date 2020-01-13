@@ -236,17 +236,29 @@ circle {
     position: relative;
 }
 
-.xMenu {
+.select-overlay {
+    width: 1200px;
+    height: 500px;
     position: absolute;
-    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    pointer-events: none;
+    top: 0;
+}
+
+
+.xMenu {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: all;
 }
 
 .yMenu {
     position: absolute;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
-
-
+    left: -40px;
+    pointer-events: all;
 }

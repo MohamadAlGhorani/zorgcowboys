@@ -90,19 +90,19 @@ function scotterPlot(data) {
     .append("circle")
     .attr("class", function (d) {
       if (d.zorgsoort == 1) {
-        return "bg-one"
+        return "bg-one circle"
       } else if (d.zorgsoort == 2) {
-        return "bg-two"
+        return "bg-two circle"
       } else if (d.zorgsoort == 3) {
-        return "bg-three"
+        return "bg-three circle"
       } else if (d.zorgsoort == 4) {
-        return "bg-four"
+        return "bg-four circle"
       } else if (d.zorgsoort == 5) {
-        return "bg-five"
+        return "bg-five circle"
       } else if (d.zorgsoort == 6) {
-        return "bg-six"
+        return "bg-six circle"
       } else if (d.zorgsoort == 7) {
-        return "bg-seven"
+        return "bg-seven circle"
       };
     })
     .style("opacity", function (d) {
@@ -112,15 +112,11 @@ function scotterPlot(data) {
         return 0
       };
     })
-    .attr("cy", d => yScale(yValue(d)))
-    .attr("cx", d => xScale(xValue(d)))
-    .attr("r", "5")
     .on("mouseleave", function (d) {
       tooltip
         .style("opacity", 0)
     })
     .on("mousemove", function (d) {
-      console.log("tooltip: ", d)
       tooltip
         .style("left", d3.event.pageX + "px")
         .style("top", d3.event.pageY - 150 + "px")
@@ -144,6 +140,12 @@ function scotterPlot(data) {
 
         );
     });
+
+    points.transition()
+    .duration(500)
+    .attr("cy", d => yScale(yValue(d)))
+    .attr("cx", d => xScale(xValue(d)))
+    .attr("r", "5");
 
 
   // Pan and zoom
@@ -245,11 +247,10 @@ function scotterPlot(data) {
           return 0
         };
       })
-      .attr("cy", d => yScale(yValue(d)))
-      .attr("cx", d => xScale(xValue(d)))
-      .attr("r", "5")
+      // .attr("cy", d => yScale(yValue(d)))
+      // .attr("cx", d => xScale(xValue(d)))
+      // .attr("r", "5")
       .on("mousemove", function (d) {
-        console.log("tooltip: ", d)
         tooltip
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 150 + "px")
@@ -273,6 +274,12 @@ function scotterPlot(data) {
 
           );
       });
+
+      points.transition()
+      .duration(500)
+      .attr("cy", d => yScale(yValue(d)))
+      .attr("cx", d => xScale(xValue(d)))
+      .attr("r", "5");
 
     points.exit().remove();
 
@@ -374,11 +381,10 @@ function scotterPlot(data) {
           return 0
         };
       })
-      .attr("cy", d => yScale(yValue(d)))
-      .attr("cx", d => xScale(xValue(d)))
-      .attr("r", "5")
+      // .attr("cy", d => yScale(yValue(d)))
+      // .attr("cx", d => xScale(xValue(d)))
+      // .attr("r", "5")
       .on("mousemove", function (d) {
-        console.log("tooltip: ", d)
         tooltip
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 150 + "px")
@@ -402,6 +408,12 @@ function scotterPlot(data) {
 
           );
       });
+
+      points.transition()
+      .duration(500)
+      .attr("cy", d => yScale(yValue(d)))
+      .attr("cx", d => xScale(xValue(d)))
+      .attr("r", "5");
 
     points.exit().remove();
 

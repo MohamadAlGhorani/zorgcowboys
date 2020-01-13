@@ -1,6 +1,6 @@
 export function genOptionsForDropdownMenu(data, menuClass) {
     // console.log(Object.keys(data[0].entries[0]))
-    var selectMenu = d3.select("#app").append('select').attr("class", menuClass)
+    var selectMenu = d3.select(".select-overlay").append('select').attr("class", menuClass)
     var option =
         selectMenu
         .selectAll("option")
