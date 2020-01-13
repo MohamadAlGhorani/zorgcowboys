@@ -172,3 +172,40 @@ circle {
     &.bg-six {fill: lightgreen;}
     &.bg-seven {fill: lightpink;}
 }
+
+
+.toolTip {
+  position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 rgba(0,0,0,.5);
+  color: white;
+  text-transform: capitalize;
+  padding: 14px;
+  text-align: left;
+  pointer-events: none;
+  max-width: 300px;
+
+  h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.5em
+  }
+
+  hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  h4 {
+      margin-bottom: 10px;
+      font-size: 1.3em;
+      font-family: 'zilla_slabsemibold';
+  }
+
+  span {
+      font-family: 'zilla_slabsemibold';
+      margin-right: 10px;
+  }
+}

@@ -8270,8 +8270,7 @@ function checkKeys(data) {
         key = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
 
-    console.log(key, value);
-
+    // console.log(key, value)
     if (typeof value != 'number') {} else if (key == "jaar" || key == "zorgsoort") {} else {
       newArr.push(key);
     }
@@ -8308,6 +8307,7 @@ function scotterPlot(data) {
     return d.omzet;
   };
 
+  var tooltip = d3.select("#app").append("div").attr("class", "toolTip");
   var xScale = d3.scaleLinear().domain(d3.extent(data[0].entries, xValue)).range([0, width]).nice();
   var yScale = d3.scaleLinear().domain(d3.extent(data[0].entries, yValue)).range([height, 0]).nice();
   var svg = d3.select("#app").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).attr("class", "scotter-plot").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -8316,7 +8316,7 @@ function scotterPlot(data) {
   var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-width);
   var gX = svg.append("g").attr("class", "x-axis").attr("transform", "translate(0," + height + ")").call(xAxis);
   var gY = svg.append("g").attr("class", "y-axis").call(yAxis);
-  var pointgroup = svg.append('g').attr("clip-path", "url(#clip)").classed("points_g", true);
+  var pointgroup = svg.append('g').attr("clip-path", "url(#clip)").style("z-index", 10).classed("points_g", true);
   var points = pointgroup.selectAll("circle").data(data[0].entries).enter().append("circle").attr("class", function (d) {
     if (d.zorgsoort == 1) {
       return "bg-one";
@@ -8347,10 +8347,15 @@ function scotterPlot(data) {
     return yScale(yValue(d));
   }).attr("cx", function (d) {
     return xScale(xValue(d));
-  }).attr("r", "5"); // Pan and zoom
+  }).attr("r", "5").on("mouseleave", function (d) {
+    tooltip.style("opacity", 0);
+  }).on("mousemove", function (d) {
+    console.log("tooltip: ", d);
+    tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+  }); // Pan and zoom
 
   var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-  svg.append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
+  svg.append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(0,0)').style("z-index", 1).lower().call(zoom);
 
   function zoomed() {
     // create new scale ojects based on event
@@ -8374,6 +8379,8 @@ function scotterPlot(data) {
 var _runApi = require("./runApi.js");
 
 var _scotterplot = require("./scotterplot.js");
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -8524,7 +8531,7 @@ function nestDataFunc(data) {
 function chartDataFunc(data) {
   return data.reduce(function (jarenObj, item) {
     jarenObj[item.jaar] = item.entries.map(function (entry) {
-      return {
+      return _defineProperty({
         concerncode: entry.key,
         plaats: entry.values[0].plaats,
         naam: entry.values[0].bedrijfsnaam,
@@ -8536,8 +8543,11 @@ function chartDataFunc(data) {
         perc_winst: entry.values[0].perc_winst,
         winst: entry.values[0].winst,
         personeelskosten: entry.values[0].personeelskostentotaal,
-        jaar: entry.values[0].jaar
-      };
+        jaar: entry.values[0].jaar,
+        gehandicapten: entry.values[0].gehandicaptenzorg,
+        geestelijk: entry.values[0].geestelijkegezondheidszorg,
+        thuiszorg: entry.values[0].thuiszorg
+      }, "jaar", entry.values[0].jaar);
     });
     return jarenObj;
   }, {});
@@ -8596,7 +8606,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50541" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

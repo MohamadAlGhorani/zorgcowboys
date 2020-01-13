@@ -18,6 +18,8 @@ function scotterPlot(data) {
   var yValue = d => d.winst;
   var xValue = d => d.omzet;
 
+  var tooltip = d3.select("#app").append("div").attr("class", "toolTip");
+
   var xScale = d3
     .scaleLinear()
     .domain(d3.extent(data[0].entries, xValue))
@@ -69,6 +71,7 @@ function scotterPlot(data) {
   var pointgroup =
     svg.append('g')
     .attr("clip-path", "url(#clip)")
+    .style("z-index", 10)
     .classed("points_g", true);
 
   var points =
@@ -92,7 +95,36 @@ function scotterPlot(data) {
                 ;})
     .attr("cy", d => yScale(yValue(d)))
     .attr("cx", d => xScale(xValue(d)))
-    .attr("r", "5");
+    .attr("r", "5")
+    .on("mouseleave", function(d){
+  		tooltip
+  		.style("opacity", 0)
+  		})
+	    .on("mousemove", function(d){
+            console.log("tooltip: ", d)
+  		    tooltip
+  				.style("left", d3.event.pageX + "px")
+  				.style("top", d3.event.pageY - 150 + "px")
+  				.style("opacity", 1)
+  				.style("display", "inline-block")
+  				.html("<h3> " + (d.naam) + "</h3>" +
+                      "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+                      "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+                      "<hr>" +
+                      "<h4> Zoort zorg </h4>" +
+                      "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+                      "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+                      "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+                      "<hr>" +
+                      "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+                      "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+                      "<span>Winst :</span>   " + (d.winst) + "<br>" +
+                      "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+                      "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+                      "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
+
+                  );
+  			});
 
 
   // Pan and zoom
@@ -109,7 +141,9 @@ function scotterPlot(data) {
     .attr("height", height)
     .style("fill", "none")
     .style("pointer-events", "all")
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+    .attr('transform', 'translate(0,0)')
+    .style("z-index", 1)
+    .lower()
     .call(zoom);
 
   function zoomed() {
