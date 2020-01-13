@@ -159,6 +159,10 @@ function chartDataFunc(data) {
                 perc_winst: entry.values[0].perc_winst,
                 winst: entry.values[0].winst,
                 personeelskosten: entry.values[0].personeelskostentotaal,
+                jaar: entry.values[0].jaar,
+                gehandicapten: entry.values[0].gehandicaptenzorg,
+                geestelijk: entry.values[0].geestelijkegezondheidszorg,
+                thuiszorg: entry.values[0].thuiszorg,
                 jaar: entry.values[0].jaar
             }
         })
