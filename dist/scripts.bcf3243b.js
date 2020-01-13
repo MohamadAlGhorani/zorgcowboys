@@ -8290,12 +8290,12 @@ var _dropDownMenu = require("./dropDownMenu.js");
 
 var margin = {
   top: 30,
-  right: 50,
+  right: 100,
   bottom: 30,
-  left: 50
+  left: 100
 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1300 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
   console.log(data[0].entries);
@@ -8438,7 +8438,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').lower().call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
@@ -8512,7 +8512,7 @@ function scotterPlot(data) {
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').lower().call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
