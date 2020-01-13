@@ -192,4 +192,21 @@ circle.bg-seven {
   margin-right: 10px;
 }
 
+#app {
+  position: relative;
+}
+
+.xMenu {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.yMenu {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
 /*# sourceMappingURL=/scripts.bcf3243b.css.map */
