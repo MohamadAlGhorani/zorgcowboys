@@ -8431,11 +8431,14 @@ function scotterPlot(data) {
       return yScale(yValue(d));
     }).attr("cx", function (d) {
       return xScale(xValue(d));
-    }).attr("r", "5");
+    }).attr("r", "5").on("mousemove", function (d) {
+      console.log("tooltip: ", d);
+      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+    });
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').lower().call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
@@ -8502,11 +8505,14 @@ function scotterPlot(data) {
       return yScale(yValue(d));
     }).attr("cx", function (d) {
       return xScale(xValue(d));
-    }).attr("r", "5");
+    }).attr("r", "5").on("mousemove", function (d) {
+      console.log("tooltip: ", d);
+      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+    });
     points.exit().remove(); // Pan and zoom
 
     var zoom = d3.zoom().scaleExtent([.5, 100]).extent([[0, 0], [width, height]]).on("zoom", zoomed);
-    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').call(zoom);
+    d3.select("svg").append("rect").attr("width", width).attr("height", height).style("fill", "none").style("pointer-events", "all").attr('transform', 'translate(' + margin.left + ',' + margin.top + ')').lower().call(zoom);
 
     function zoomed() {
       // create new scale ojects based on event
@@ -8756,7 +8762,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50541" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
