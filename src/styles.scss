@@ -237,7 +237,7 @@ circle {
 }
 
 .circle {
-    transition: ease all .5s;
+    transition: ease stroke .5s, ease opacity .5s;
 }
 
 .select-overlay {
