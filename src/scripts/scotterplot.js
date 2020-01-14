@@ -115,6 +115,10 @@ function scotterPlot(data) {
     .on("mouseleave", function (d) {
       tooltip
         .style("opacity", 0)
+
+        points.style("opacity", 1)
+        this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+
     })
     .on("mousemove", function (d) {
       tooltip
@@ -126,7 +130,7 @@ function scotterPlot(data) {
           "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
           "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
           "<hr>" +
-          "<h4> Zoort zorg </h4>" +
+          "<h4> Soort zorg </h4>" +
           "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
           "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
           "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
@@ -139,6 +143,9 @@ function scotterPlot(data) {
           "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
         );
+        points.style("opacity", .2)
+        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;")
+
     });
 
   points.transition()
@@ -250,6 +257,14 @@ function scotterPlot(data) {
       // .attr("cy", d => yScale(yValue(d)))
       // .attr("cx", d => xScale(xValue(d)))
       // .attr("r", "5")
+      // .on("mouseleave", function (d) {
+      //   tooltip
+      //     .style("opacity", 0)
+      //
+      //     points.style("opacity", 1)
+      //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+      //
+      // })
       .on("mousemove", function (d) {
         tooltip
           .style("left", d3.event.pageX + "px")
@@ -260,7 +275,7 @@ function scotterPlot(data) {
             "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
             "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
             "<hr>" +
-            "<h4> Zoort zorg </h4>" +
+            "<h4> Soort zorg </h4>" +
             "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
             "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
             "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
@@ -273,6 +288,8 @@ function scotterPlot(data) {
             "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
           );
+          points.style("opacity", .2)
+          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
       });
 
     points.transition()
@@ -384,6 +401,14 @@ function scotterPlot(data) {
       // .attr("cy", d => yScale(yValue(d)))
       // .attr("cx", d => xScale(xValue(d)))
       // .attr("r", "5")
+      // .on("mouseleave", function (d) {
+      //   tooltip
+      //     .style("opacity", 0)
+      //
+      //     points.style("opacity", 1)
+      //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
+      //
+      // })
       .on("mousemove", function (d) {
         tooltip
           .style("left", d3.event.pageX + "px")
@@ -394,7 +419,7 @@ function scotterPlot(data) {
             "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
             "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
             "<hr>" +
-            "<h4> Zoort zorg </h4>" +
+            "<h4> Soort zorg </h4>" +
             "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
             "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
             "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
@@ -407,6 +432,8 @@ function scotterPlot(data) {
             "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
           );
+          points.style("opacity", .2)
+          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
       });
 
     points.transition()

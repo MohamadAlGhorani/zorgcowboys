@@ -8324,8 +8324,12 @@ function scotterPlot(data) {
     ;
   }).on("mouseleave", function (d) {
     tooltip.style("opacity", 0);
+    points.style("opacity", 1);
+    this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;");
   }).on("mousemove", function (d) {
-    tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+    tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Soort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+    points.style("opacity", .2);
+    this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;");
   });
   points.transition().duration(500).attr("cy", function (d) {
     return yScale(yValue(d));
@@ -8400,8 +8404,18 @@ function scotterPlot(data) {
     }) // .attr("cy", d => yScale(yValue(d)))
     // .attr("cx", d => xScale(xValue(d)))
     // .attr("r", "5")
+    // .on("mouseleave", function (d) {
+    //   tooltip
+    //     .style("opacity", 0)
+    //
+    //     points.style("opacity", 1)
+    //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+    //
+    // })
     .on("mousemove", function (d) {
-      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Soort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+      points.style("opacity", .2);
+      this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s");
     });
     points.transition().duration(500).attr("cy", function (d) {
       return yScale(yValue(d));
@@ -8477,8 +8491,18 @@ function scotterPlot(data) {
     }) // .attr("cy", d => yScale(yValue(d)))
     // .attr("cx", d => xScale(xValue(d)))
     // .attr("r", "5")
+    // .on("mouseleave", function (d) {
+    //   tooltip
+    //     .style("opacity", 0)
+    //
+    //     points.style("opacity", 1)
+    //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
+    //
+    // })
     .on("mousemove", function (d) {
-      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Zoort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+      tooltip.style("left", d3.event.pageX + "px").style("top", d3.event.pageY - 150 + "px").style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<hr>" + "<h4> Soort zorg </h4>" + "<span>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<hr>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>   " + d.omzet + "<br>" + "<span>Winst :</span>   " + d.winst + "<br>" + "<span>Personeelskosten :</span>   " + d.personeelskosten + "<br>" + "<span>Winst percentage :</span>   " + d.perc_winst + "%<br>" + "<span>Loon percentage :</span>   " + d.perc_loon + "%<br>");
+      points.style("opacity", .2);
+      this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s");
     });
     points.transition().duration(500).attr("cy", function (d) {
       return yScale(yValue(d));
@@ -8738,7 +8762,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60534" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
