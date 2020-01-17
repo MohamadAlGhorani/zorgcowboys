@@ -116,8 +116,8 @@ function scotterPlot(data) {
       tooltip
         .style("opacity", 0)
 
-        points.style("opacity", 1)
-        this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+      points.style("opacity", 1)
+      this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
 
     })
     .on("mousemove", function (d) {
@@ -139,12 +139,13 @@ function scotterPlot(data) {
           "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
           "<span>Winst :</span>   " + (d.winst) + "<br>" +
           "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+          "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
           "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
           "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
         );
-        points.style("opacity", .2)
-        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;")
+      points.style("opacity", .2)
+      this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;")
 
     });
 
@@ -284,12 +285,13 @@ function scotterPlot(data) {
             "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
             "<span>Winst :</span>   " + (d.winst) + "<br>" +
             "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+            "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
             "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
             "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
           );
-          points.style("opacity", .2)
-          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        points.style("opacity", .2)
+        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
       });
 
     points.transition()
@@ -428,12 +430,13 @@ function scotterPlot(data) {
             "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
             "<span>Winst :</span>   " + (d.winst) + "<br>" +
             "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+            "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
             "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
             "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
           );
-          points.style("opacity", .2)
-          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        points.style("opacity", .2)
+        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
       });
 
     points.transition()
