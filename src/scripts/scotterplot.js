@@ -561,7 +561,9 @@ function scotterPlot(data) {
             return 0
           } else if (typeof d.winst != "number") {
             return 0
-          };
+        } else if (typeof d.omzet == null) {
+            return 0
+          }
         })
         // .attr("cy", d => yScale(yValue(d)))
         // .attr("cx", d => xScale(xValue(d)))
@@ -569,7 +571,9 @@ function scotterPlot(data) {
         // .on("mouseleave", function (d) {
         //   tooltip
         //     .style("opacity", 0)
-        //
+        //else if (typeof d.winst != "number") {
+        //   return 0
+        // }
         //     points.style("opacity", 1)
         //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
         //

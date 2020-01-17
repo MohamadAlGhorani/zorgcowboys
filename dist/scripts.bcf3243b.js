@@ -8613,16 +8613,18 @@ function scotterPlot(data) {
           return 0;
         } else if (typeof d.winst != "number") {
           return 0;
+        } else if (typeof d.omzet == null) {
+          return 0;
         }
-
-        ;
       }) // .attr("cy", d => yScale(yValue(d)))
       // .attr("cx", d => xScale(xValue(d)))
       // .attr("r", "5")
       // .on("mouseleave", function (d) {
       //   tooltip
       //     .style("opacity", 0)
-      //
+      //else if (typeof d.winst != "number") {
+      //   return 0
+      // }
       //     points.style("opacity", 1)
       //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
       //
@@ -8821,14 +8823,14 @@ function chartDataFunc(data) {
         plaats: entry.values[0].plaats,
         naam: entry.values[0].bedrijfsnaam,
         zorgsoort: checkZorg(entry.values[0]),
-        omzet: entry.values[0].omzet,
+        omzet: naChecker(entry.values[0].omzet),
         fte: checkFte(entry.values[0]),
         omzet_fte: checkFteOmzet(entry.values[0]),
-        perc_loon: entry.values[0].perc_loon,
-        perc_winst: entry.values[0].perc_winst,
-        winst: entry.values[0].winst,
-        personeelskosten: entry.values[0].personeelskostentotaal,
-        jaar: entry.values[0].jaar,
+        perc_loon: naChecker(entry.values[0].perc_loon),
+        perc_winst: naChecker(entry.values[0].perc_winst),
+        winst: naChecker(entry.values[0].winst),
+        personeelskosten: naChecker(entry.values[0].personeelskostentotaal),
+        jaar: naChecker(entry.values[0].jaar),
         gehandicapten: entry.values[0].gehandicaptenzorg,
         geestelijk: entry.values[0].geestelijkegezondheidszorg,
         thuiszorg: entry.values[0].thuiszorg
@@ -8851,6 +8853,14 @@ function checkFteOmzet(data) {
     return data.omzet_fte;
   } else {
     return null;
+  }
+}
+
+function naChecker(data) {
+  if (data == "NA" || data == "na") {
+    return null;
+  } else {
+    return data;
   }
 } // jaren['2011']
 },{"./runApi.js":"scripts/runApi.js","./scotterplot.js":"scripts/scotterplot.js"}],"scripts/index.js":[function(require,module,exports) {
@@ -8891,7 +8901,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61590" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

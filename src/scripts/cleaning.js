@@ -152,14 +152,14 @@ function chartDataFunc(data) {
                 plaats: entry.values[0].plaats,
                 naam: entry.values[0].bedrijfsnaam,
                 zorgsoort: checkZorg(entry.values[0]),
-                omzet: entry.values[0].omzet,
+                omzet: naChecker(entry.values[0].omzet),
                 fte: checkFte(entry.values[0]),
                 omzet_fte: checkFteOmzet(entry.values[0]),
-                perc_loon: entry.values[0].perc_loon,
-                perc_winst: entry.values[0].perc_winst,
-                winst: entry.values[0].winst,
-                personeelskosten: entry.values[0].personeelskostentotaal,
-                jaar: entry.values[0].jaar,
+                perc_loon: naChecker(entry.values[0].perc_loon),
+                perc_winst: naChecker(entry.values[0].perc_winst),
+                winst: naChecker(entry.values[0].winst),
+                personeelskosten: naChecker(entry.values[0].personeelskostentotaal),
+                jaar: naChecker(entry.values[0].jaar),
                 gehandicapten: entry.values[0].gehandicaptenzorg,
                 geestelijk: entry.values[0].geestelijkegezondheidszorg,
                 thuiszorg: entry.values[0].thuiszorg,
@@ -186,6 +186,16 @@ function checkFteOmzet(data) {
     } else {
         return null
     }
+}
+
+function naChecker(data) {
+    if (data == "NA" || data == "na") {
+        return null
+    } else {
+        return data
+    }
+
+
 }
 
 // jaren['2011']
