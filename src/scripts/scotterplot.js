@@ -2,8 +2,12 @@ import {
   genOptionsForDropdownMenu
 } from './dropDownMenu.js'
 
+import {
+  genYearSlider
+} from './yearSlider.js'
+
 var margin = {
-    top: 30,
+    top: 40,
     right: 100,
     bottom: 30,
     left: 100
@@ -13,6 +17,11 @@ var margin = {
 
 function scotterPlot(data) {
   console.log(data[0].entries);
+
+  var sliderClass = "slider";
+  genYearSlider(data, sliderClass)
+  var slider = document.querySelector('.slider');
+  var sliderValue = slider.value;
 
   var xMenuClass = "xMenu";
   var yMenuClass = "yMenu";
@@ -185,297 +194,452 @@ function scotterPlot(data) {
       .attr("cy", d => new_yScale(yValue(d)))
       .attr("cx", d => new_xScale(xValue(d)))
   }
-
-  xMenu.addEventListener('change', function () {
-    var xMenuValue = document.querySelector(".xMenu").value;
-    var yMenuValue = document.querySelector(".yMenu").value;
-
-    console.log(yMenuValue)
-    console.log(xMenuValue)
-
-    var yValue = d => d[yMenuValue];
-    var xValue = d => d[xMenuValue];
-
-    var xScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data[0].entries, xValue))
-      .range([0, width])
-      .nice();
-
-    var yScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data[0].entries, yValue))
-      .range([height, 0])
-      .nice();
-
-    var xAxis = d3
-      .axisBottom(xScale)
-      .ticks(10)
-      .tickSize(-height);
-
-    var yAxis = d3
-      .axisLeft(yScale)
-      .ticks(10)
-      .tickSize(-width);
-
-    var gX = d3.select(".x-axis")
-      .call(xAxis);
-
-    var gY = d3.select(".y-axis")
-      .call(yAxis);
-
-    var points =
-      d3.selectAll("circle")
-      .data(data[0].entries)
-
-    points.enter()
-      .append("circle")
-      .merge(points)
-      .attr("class", function (d) {
-        if (d.zorgsoort == 1) {
-          return "bg-one"
-        } else if (d.zorgsoort == 2) {
-          return "bg-two"
-        } else if (d.zorgsoort == 3) {
-          return "bg-three"
-        } else if (d.zorgsoort == 4) {
-          return "bg-four"
-        } else if (d.zorgsoort == 5) {
-          return "bg-five"
-        } else if (d.zorgsoort == 6) {
-          return "bg-six"
-        } else if (d.zorgsoort == 7) {
-          return "bg-seven"
-        };
-      })
-      .style("opacity", function (d) {
-        if (typeof d.omzet != "number") {
-          return 0
-        } else if (typeof d.winst != "number") {
-          return 0
-        };
-      })
-      // .attr("cy", d => yScale(yValue(d)))
-      // .attr("cx", d => xScale(xValue(d)))
-      // .attr("r", "5")
-      // .on("mouseleave", function (d) {
-      //   tooltip
-      //     .style("opacity", 0)
-      //
-      //     points.style("opacity", 1)
-      //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
-      //
-      // })
-      .on("mousemove", function (d) {
-        tooltip
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 150 + "px")
-          .style("opacity", 1)
-          .style("display", "inline-block")
-          .html("<h3> " + (d.naam) + "</h3>" +
-            "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
-            "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-            "<hr>" +
-            "<h4> Soort zorg </h4>" +
-            "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-            "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-            "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-            "<hr>" +
-            "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-            "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-            "<span>Winst :</span>   " + (d.winst) + "<br>" +
-            "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-            "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
-            "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
-            "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
-
-          );
-        points.style("opacity", .2)
-        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
-      });
-
-    points.transition()
-      .duration(500)
-      .attr("cy", d => yScale(yValue(d)))
-      .attr("cx", d => xScale(xValue(d)))
-      .attr("r", "5");
-
-    points.exit().remove();
-
-    // Pan and zoom
-    var zoom = d3.zoom()
-      .scaleExtent([.5, 100])
-      .extent([
-        [0, 0],
-        [width, height]
-      ])
-      .on("zoom", zoomed);
-
-    d3.select("svg")
-      .style("pointer-events", "all")
-      .attr('transform', 'translate(0,0)')
-      .lower()
-      .call(zoom);
-
-    function zoomed() {
-      // create new scale ojects based on event
-      var new_xScale = d3.event.transform.rescaleX(xScale);
-      var new_yScale = d3.event.transform.rescaleY(yScale);
-      // update axes
-      gX.call(xAxis.scale(new_xScale));
-      gY.call(yAxis.scale(new_yScale));
-      points.data(data[0].entries)
-        .attr("cy", d => new_yScale(yValue(d)))
-        .attr("cx", d => new_xScale(xValue(d)))
-    }
+  slider.addEventListener('change', changeValues());
+  xMenu.addEventListener('change', changeValues());
+  yMenu.addEventListener('change', changeValues());
 
 
-  })
-  yMenu.addEventListener('change', function () {
-    var xMenuValue = document.querySelector(".xMenu").value;
-    var yMenuValue = document.querySelector(".yMenu").value;
+  function changeValues() {
+    slider.addEventListener('input', function () {
+      var xMenuValue = document.querySelector(".xMenu").value;
+      var yMenuValue = document.querySelector(".yMenu").value;
 
-    console.log(yMenuValue)
-    console.log(xMenuValue)
+      console.log(yMenuValue)
+      console.log(xMenuValue)
 
-    var yValue = d => d[yMenuValue];
-    var xValue = d => d[xMenuValue];
+      var yValue = d => d[yMenuValue];
+      var xValue = d => d[xMenuValue];
+      var slider = document.querySelector('.slider');
+      var sliderValue = slider.value;
+      var xScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, xValue))
+        .range([0, width])
+        .nice();
 
-    var xScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data[0].entries, xValue))
-      .range([0, width])
-      .nice();
+      var yScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, yValue))
+        .range([height, 0])
+        .nice();
 
-    var yScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data[0].entries, yValue))
-      .range([height, 0])
-      .nice();
+      var xAxis = d3
+        .axisBottom(xScale)
+        .ticks(10)
+        .tickSize(-height);
 
-    var xAxis = d3
-      .axisBottom(xScale)
-      .ticks(10)
-      .tickSize(-height);
+      var yAxis = d3
+        .axisLeft(yScale)
+        .ticks(10)
+        .tickSize(-width);
 
-    var yAxis = d3
-      .axisLeft(yScale)
-      .ticks(10)
-      .tickSize(-width);
+      var gX = d3.select(".x-axis")
+        .call(xAxis);
 
-    var gX = d3.select(".x-axis")
-      .call(xAxis);
+      var gY = d3.select(".y-axis")
+        .call(yAxis);
 
-    var gY = d3.select(".y-axis")
-      .call(yAxis);
+      var points =
+        d3.selectAll("circle")
+        .data(data[sliderValue].entries)
 
-    var points =
-      d3.selectAll("circle")
-      .data(data[0].entries)
+      points.enter()
+        .append("circle")
+        .merge(points)
+        .attr("class", function (d) {
+          if (d.zorgsoort == 1) {
+            return "bg-one"
+          } else if (d.zorgsoort == 2) {
+            return "bg-two"
+          } else if (d.zorgsoort == 3) {
+            return "bg-three"
+          } else if (d.zorgsoort == 4) {
+            return "bg-four"
+          } else if (d.zorgsoort == 5) {
+            return "bg-five"
+          } else if (d.zorgsoort == 6) {
+            return "bg-six"
+          } else if (d.zorgsoort == 7) {
+            return "bg-seven"
+          };
+        })
+        .style("opacity", function (d) {
+          if (typeof d.omzet != "number") {
+            return 0
+          } else if (typeof d.winst != "number") {
+            return 0
+          };
+        })
+        // .attr("cy", d => yScale(yValue(d)))
+        // .attr("cx", d => xScale(xValue(d)))
+        // .attr("r", "5")
+        // .on("mouseleave", function (d) {
+        //   tooltip
+        //     .style("opacity", 0)
+        //
+        //     points.style("opacity", 1)
+        //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+        //
+        // })
+        .on("mousemove", function (d) {
+          tooltip
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
-    points.enter()
-      .append("circle")
-      .merge(points)
-      .attr("class", function (d) {
-        if (d.zorgsoort == 1) {
-          return "bg-one"
-        } else if (d.zorgsoort == 2) {
-          return "bg-two"
-        } else if (d.zorgsoort == 3) {
-          return "bg-three"
-        } else if (d.zorgsoort == 4) {
-          return "bg-four"
-        } else if (d.zorgsoort == 5) {
-          return "bg-five"
-        } else if (d.zorgsoort == 6) {
-          return "bg-six"
-        } else if (d.zorgsoort == 7) {
-          return "bg-seven"
-        };
-      })
-      .style("opacity", function (d) {
-        if (typeof d.omzet != "number") {
-          return 0
-        } else if (typeof d.winst != "number") {
-          return 0
-        };
-      })
-      // .attr("cy", d => yScale(yValue(d)))
-      // .attr("cx", d => xScale(xValue(d)))
-      // .attr("r", "5")
-      // .on("mouseleave", function (d) {
-      //   tooltip
-      //     .style("opacity", 0)
-      //
-      //     points.style("opacity", 1)
-      //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
-      //
-      // })
-      .on("mousemove", function (d) {
-        tooltip
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 150 + "px")
-          .style("opacity", 1)
-          .style("display", "inline-block")
-          .html("<h3> " + (d.naam) + "</h3>" +
-            "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
-            "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-            "<hr>" +
-            "<h4> Soort zorg </h4>" +
-            "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-            "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-            "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-            "<hr>" +
-            "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-            "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-            "<span>Winst :</span>   " + (d.winst) + "<br>" +
-            "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-            "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
-            "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
-            "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
+            );
+          points.style("opacity", .2)
+          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        });
 
-          );
-        points.style("opacity", .2)
-        this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
-      });
+      points.transition()
+        .duration(500)
+        .attr("cy", d => yScale(yValue(d)))
+        .attr("cx", d => xScale(xValue(d)))
+        .attr("r", "5");
 
-    points.transition()
-      .duration(500)
-      .attr("cy", d => yScale(yValue(d)))
-      .attr("cx", d => xScale(xValue(d)))
-      .attr("r", "5");
+      points.exit().remove();
 
-    points.exit().remove();
+      // Pan and zoom
+      var zoom = d3.zoom()
+        .scaleExtent([.5, 100])
+        .extent([
+          [0, 0],
+          [width, height]
+        ])
+        .on("zoom", zoomed);
 
-    // Pan and zoom
-    var zoom = d3.zoom()
-      .scaleExtent([.5, 100])
-      .extent([
-        [0, 0],
-        [width, height]
-      ])
-      .on("zoom", zoomed);
+      d3.select("svg")
+        .style("pointer-events", "all")
+        .attr('transform', 'translate(0,0)')
+        .lower()
+        .call(zoom);
 
-    d3.select("svg")
-      .style("pointer-events", "all")
-      .attr('transform', 'translate(0,0)')
-      .lower()
-      .call(zoom);
+      function zoomed() {
+        // create new scale ojects based on event
+        var new_xScale = d3.event.transform.rescaleX(xScale);
+        var new_yScale = d3.event.transform.rescaleY(yScale);
+        // update axes
+        gX.call(xAxis.scale(new_xScale));
+        gY.call(yAxis.scale(new_yScale));
+        points.data(data[sliderValue].entries)
+          .attr("cy", d => new_yScale(yValue(d)))
+          .attr("cx", d => new_xScale(xValue(d)))
+      }
+
+    })
+    xMenu.addEventListener('change', function () {
+      var slider = document.querySelector('.slider');
+      var sliderValue = slider.value;
+      var xMenuValue = document.querySelector(".xMenu").value;
+      var yMenuValue = document.querySelector(".yMenu").value;
+
+      console.log(yMenuValue)
+      console.log(xMenuValue)
+
+      var yValue = d => d[yMenuValue];
+      var xValue = d => d[xMenuValue];
+
+      var xScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, xValue))
+        .range([0, width])
+        .nice();
+
+      var yScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, yValue))
+        .range([height, 0])
+        .nice();
+
+      var xAxis = d3
+        .axisBottom(xScale)
+        .ticks(10)
+        .tickSize(-height);
+
+      var yAxis = d3
+        .axisLeft(yScale)
+        .ticks(10)
+        .tickSize(-width);
+
+      var gX = d3.select(".x-axis")
+        .call(xAxis);
+
+      var gY = d3.select(".y-axis")
+        .call(yAxis);
+
+      var points =
+        d3.selectAll("circle")
+        .data(data[sliderValue].entries)
+
+      points.enter()
+        .append("circle")
+        .merge(points)
+        .attr("class", function (d) {
+          if (d.zorgsoort == 1) {
+            return "bg-one"
+          } else if (d.zorgsoort == 2) {
+            return "bg-two"
+          } else if (d.zorgsoort == 3) {
+            return "bg-three"
+          } else if (d.zorgsoort == 4) {
+            return "bg-four"
+          } else if (d.zorgsoort == 5) {
+            return "bg-five"
+          } else if (d.zorgsoort == 6) {
+            return "bg-six"
+          } else if (d.zorgsoort == 7) {
+            return "bg-seven"
+          };
+        })
+        .style("opacity", function (d) {
+          if (typeof d.omzet != "number") {
+            return 0
+          } else if (typeof d.winst != "number") {
+            return 0
+          };
+        })
+        // .attr("cy", d => yScale(yValue(d)))
+        // .attr("cx", d => xScale(xValue(d)))
+        // .attr("r", "5")
+        // .on("mouseleave", function (d) {
+        //   tooltip
+        //     .style("opacity", 0)
+        //
+        //     points.style("opacity", 1)
+        //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black;")
+        //
+        // })
+        .on("mousemove", function (d) {
+          tooltip
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
+
+            );
+          points.style("opacity", .2)
+          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        });
+
+      points.transition()
+        .duration(500)
+        .attr("cy", d => yScale(yValue(d)))
+        .attr("cx", d => xScale(xValue(d)))
+        .attr("r", "5");
+
+      points.exit().remove();
+
+      // Pan and zoom
+      var zoom = d3.zoom()
+        .scaleExtent([.5, 100])
+        .extent([
+          [0, 0],
+          [width, height]
+        ])
+        .on("zoom", zoomed);
+
+      d3.select("svg")
+        .style("pointer-events", "all")
+        .attr('transform', 'translate(0,0)')
+        .lower()
+        .call(zoom);
+
+      function zoomed() {
+        // create new scale ojects based on event
+        var new_xScale = d3.event.transform.rescaleX(xScale);
+        var new_yScale = d3.event.transform.rescaleY(yScale);
+        // update axes
+        gX.call(xAxis.scale(new_xScale));
+        gY.call(yAxis.scale(new_yScale));
+        points.data(data[sliderValue].entries)
+          .attr("cy", d => new_yScale(yValue(d)))
+          .attr("cx", d => new_xScale(xValue(d)))
+      }
 
 
-    function zoomed() {
-      // create new scale ojects based on event
-      var new_xScale = d3.event.transform.rescaleX(xScale);
-      var new_yScale = d3.event.transform.rescaleY(yScale);
-      // update axes
-      gX.call(xAxis.scale(new_xScale));
-      gY.call(yAxis.scale(new_yScale));
-      points.data(data[0].entries)
-        .attr("cy", d => new_yScale(yValue(d)))
-        .attr("cx", d => new_xScale(xValue(d)))
-    }
+    })
+    yMenu.addEventListener('change', function () {
+      var slider = document.querySelector('.slider');
+      var sliderValue = slider.value;
+      var xMenuValue = document.querySelector(".xMenu").value;
+      var yMenuValue = document.querySelector(".yMenu").value;
 
-  })
+      console.log(yMenuValue)
+      console.log(xMenuValue)
+
+      var yValue = d => d[yMenuValue];
+      var xValue = d => d[xMenuValue];
+
+      var xScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, xValue))
+        .range([0, width])
+        .nice();
+
+      var yScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data[sliderValue].entries, yValue))
+        .range([height, 0])
+        .nice();
+
+      var xAxis = d3
+        .axisBottom(xScale)
+        .ticks(10)
+        .tickSize(-height);
+
+      var yAxis = d3
+        .axisLeft(yScale)
+        .ticks(10)
+        .tickSize(-width);
+
+      var gX = d3.select(".x-axis")
+        .call(xAxis);
+
+      var gY = d3.select(".y-axis")
+        .call(yAxis);
+
+      var points =
+        d3.selectAll("circle")
+        .data(data[sliderValue].entries)
+
+      points.enter()
+        .append("circle")
+        .merge(points)
+        .attr("class", function (d) {
+          if (d.zorgsoort == 1) {
+            return "bg-one"
+          } else if (d.zorgsoort == 2) {
+            return "bg-two"
+          } else if (d.zorgsoort == 3) {
+            return "bg-three"
+          } else if (d.zorgsoort == 4) {
+            return "bg-four"
+          } else if (d.zorgsoort == 5) {
+            return "bg-five"
+          } else if (d.zorgsoort == 6) {
+            return "bg-six"
+          } else if (d.zorgsoort == 7) {
+            return "bg-seven"
+          };
+        })
+        .style("opacity", function (d) {
+          if (typeof d.omzet != "number") {
+            return 0
+          } else if (typeof d.winst != "number") {
+            return 0
+          };
+        })
+        // .attr("cy", d => yScale(yValue(d)))
+        // .attr("cx", d => xScale(xValue(d)))
+        // .attr("r", "5")
+        // .on("mouseleave", function (d) {
+        //   tooltip
+        //     .style("opacity", 0)
+        //
+        //     points.style("opacity", 1)
+        //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
+        //
+        // })
+        .on("mousemove", function (d) {
+          tooltip
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
+
+            );
+          points.style("opacity", .2)
+          this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        });
+
+      points.transition()
+        .duration(500)
+        .attr("cy", d => yScale(yValue(d)))
+        .attr("cx", d => xScale(xValue(d)))
+        .attr("r", "5");
+
+      points.exit().remove();
+
+      // Pan and zoom
+      var zoom = d3.zoom()
+        .scaleExtent([.5, 100])
+        .extent([
+          [0, 0],
+          [width, height]
+        ])
+        .on("zoom", zoomed);
+
+      d3.select("svg")
+        .style("pointer-events", "all")
+        .attr('transform', 'translate(0,0)')
+        .lower()
+        .call(zoom);
+
+
+      function zoomed() {
+        // create new scale ojects based on event
+        var new_xScale = d3.event.transform.rescaleX(xScale);
+        var new_yScale = d3.event.transform.rescaleY(yScale);
+        // update axes
+        gX.call(xAxis.scale(new_xScale));
+        gY.call(yAxis.scale(new_yScale));
+        points.data(data[sliderValue].entries)
+          .attr("cy", d => new_yScale(yValue(d)))
+          .attr("cx", d => new_xScale(xValue(d)))
+      }
+
+    })
+  }
 }
 
 

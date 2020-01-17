@@ -211,6 +211,11 @@ circle.bg-seven {
   top: 0;
 }
 
+.slider-container {
+  text-align: center;
+  pointer-events: all;
+}
+
 .xMenu {
   position: absolute;
   bottom: -20px;
