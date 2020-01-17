@@ -1,72 +1,72 @@
 @font-face {
   font-family: "zilla_slabregular";
-  src: url("/a9dd51a895d23bb8639630ef17a5fcad.woff2") format("woff2"), url("/6ffa275ae289d23fcf3bd1e284864494.woff") format("woff"), url("/7dae050e107cd5ac0b84dc534ff9fe40.ttf") format("ttf");
+  src: url("/zillaslab-regular-webfont.17a5fcad.woff2") format("woff2"), url("/zillaslab-regular-webfont.84864494.woff") format("woff"), url("/zillaslab-Regular.4ff9fe40.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabsemibold";
-  src: url("/93e285886f544b44d24ef9924eb684b2.woff2") format("woff2"), url("/fae793c799d5ce0a14331e88e8ef6c4e.woff") format("woff"), url("/e5ef8b061c8ebffced8d425c1ec55956.ttf") format("ttf");
+  src: url("/zillaslab-semibold-webfont.4eb684b2.woff2") format("woff2"), url("/zillaslab-semibold-webfont.e8ef6c4e.woff") format("woff"), url("/zillaslab-SemiBold.1ec55956.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slablight";
-  src: url("/69a72df809c9bd133722fed767cb1603.woff2") format("woff2"), url("/1941796e7c85bf3d0000f2becf06009e.woff") format("woff"), url("/444b5c200940c3adcca4dff0df6ea68e.ttf") format("ttf");
+  src: url("/zillaslab-light-webfont.67cb1603.woff2") format("woff2"), url("/zillaslab-light-webfont.cf06009e.woff") format("woff"), url("/zillaslab-Light.df6ea68e.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabsemibold_italic";
-  src: url("/0a1d78ffc5424133d3857e2ae3e3f2df.woff2") format("woff2"), url("/22ac0f732123e82cb8318b7228ec0ba3.woff") format("woff"), url("/7454212898045fdc7db7ea24c6613613.ttf") format("ttf");
+  src: url("/zillaslab-semibolditalic-webfont.e3e3f2df.woff2") format("woff2"), url("/zillaslab-semibolditalic-webfont.28ec0ba3.woff") format("woff"), url("/zillaslab-SemiBoldItalic.c6613613.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "tenso_boldregular";
-  src: url("/ae446602c30d614413e12e05e65ac1aa.woff2") format("woff2"), url("/55ffcea489917026c59713b3ea18d59d.woff") format("woff"), url("/5cca83aad642e2dde542665ffdf42075.ttf") format("ttf");
+  src: url("/tensobold-webfont.e65ac1aa.woff2") format("woff2"), url("/tensobold-webfont.ea18d59d.woff") format("woff"), url("/tensobold.fdf42075.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "tenso_regularregular";
-  src: url("/0cf269aa8b1faf68f4e199d7cc3668da.woff2") format("woff2"), url("/3c8edb08b9e341e1822e43eeee94d523.woff") format("woff"), url("/58dca03cabc1066b879a5dd527d293a8.ttf") format("ttf");
+  src: url("/tensoreg-webfont.cc3668da.woff2") format("woff2"), url("/tensoreg-webfont.ee94d523.woff") format("woff"), url("/tensoreg.27d293a8.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabbold";
-  src: url("/d73030fee1723ccd0ada4acb2fe7df7c.woff2") format("woff2"), url("/d11510413beff1daaf02e873bc11ea0f.woff") format("woff"), url("/d3aa424eea156fc60ad3dc61e3667107.ttf") format("ttf");
+  src: url("/zillaslab-bold-webfont.2fe7df7c.woff2") format("woff2"), url("/zillaslab-bold-webfont.bc11ea0f.woff") format("woff"), url("/zillaslab-Bold.e3667107.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabbold_italic";
-  src: url("/4322cf381acff3f22fba132ee6632c00.woff2") format("woff2"), url("/c0772c9acdff5ef6590d036a3456f767.woff") format("woff"), url("/edf351390b8c6a92bde7970943046ad9.ttf") format("ttf");
+  src: url("/zillaslab-bolditalic-webfont.e6632c00.woff2") format("woff2"), url("/zillaslab-bolditalic-webfont.3456f767.woff") format("woff"), url("/zillaslab-BoldItalic.43046ad9.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabitalic";
-  src: url("/ba05820d6956527178d51bfb9368b99e.woff2") format("woff2"), url("/6aecd843aedc0543fe48cccc6f0a14b6.woff") format("woff"), url("/ecd02bb3cdc537d3279f662185c91b8c.ttf") format("ttf");
+  src: url("/zillaslab-italic-webfont.9368b99e.woff2") format("woff2"), url("/zillaslab-italic-webfont.6f0a14b6.woff") format("woff"), url("/zillaslab-Italic.85c91b8c.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slablight_italic";
-  src: url("/697e6290c6263a655ffdb9c1cf2c1323.woff2") format("woff2"), url("/7902d986716b36db763f3d25d5a7bbee.woff") format("woff"), url("/e122a37d3d6cb7a9e29cb8667fc11ba7.ttf") format("ttf");
+  src: url("/zillaslab-lightitalic-webfont.cf2c1323.woff2") format("woff2"), url("/zillaslab-lightitalic-webfont.d5a7bbee.woff") format("woff"), url("/zillaslab-LightItalic.7fc11ba7.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabmedium";
-  src: url("/db5abe47af7192ac3eb916ca201bf133.woff2") format("woff2"), url("/59001d26c0d97920193644b6f822432d.woff") format("woff"), url("/00ddf3f00e9730031e437952dcea0514.ttf") format("ttf");
+  src: url("/zillaslab-medium-webfont.201bf133.woff2") format("woff2"), url("/zillaslab-medium-webfont.f822432d.woff") format("woff"), url("/zillaslab-Medium.dcea0514.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "zilla_slabmedium_italic";
-  src: url("/7179a11dfb332ac4c94ba2894b3cbf3b.woff2") format("woff2"), url("/7071c7ce44fb18248f4f0fcfc05c2dd0.woff") format("woff"), url("/41c1f5077c584acb2738910e876bad5f.ttf") format("ttf");
+  src: url("/zillaslab-mediumitalic-webfont.4b3cbf3b.woff2") format("woff2"), url("/zillaslab-mediumitalic-webfont.c05c2dd0.woff") format("woff"), url("/zillaslab-MediumItalic.876bad5f.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -127,7 +127,7 @@ header .right-header:before {
 }
 
 svg {
-  display: flex;
+  display: block;
   margin: 0 auto;
 }
 
@@ -204,8 +204,9 @@ circle.bg-seven {
   width: 1100px;
   height: 500px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 1px;
+  right: 1px;
+  margin: 0 auto;
   pointer-events: none;
   top: 0;
 }
