@@ -37,7 +37,8 @@ Thanks to Pointer for sharing their project and knowledge about the problem. And
 
 ## Authors
 
-**Mohamad Al Ghorani** 
+**Mohamad Al Ghorani**
+
 **Wiebe Kremer**
 
 ## License
