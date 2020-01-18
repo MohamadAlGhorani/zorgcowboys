@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Deployment
 I used Netlify te deploy my project more information about Netlify [click hier](https://www.netlify.com)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0e963bb2-7d04-48ff-89bd-0c927b04a952/deploy-status)](https://app.netlify.com/sites/frontend-data-cmd/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/42bd8b6f-1840-4e4f-84a7-67689e8b0672/deploy-status)](https://app.netlify.com/sites/zorgcowboys/deploys)
 
 ## Credits
 
@@ -38,7 +38,7 @@ Thanks to Pointer for sharing their project and knowledge about the problem. And
 ## Authors
 
 **Mohamad Al Ghorani** 
-**Wiebe Kerman **
+**Wiebe Kremer**
 
 ## License
 
