@@ -17,7 +17,7 @@ var margin = {
 
 function scotterPlot(data) {
   console.log(data[0].entries);
-
+  var closeButtons;
   var sliderClass = "slider";
   genYearSlider(data, sliderClass)
   var slider = document.querySelector('.slider');
@@ -156,7 +156,47 @@ function scotterPlot(data) {
       points.style("opacity", .2)
       this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;")
 
+    })
+    .on("click", function (d) {
+      d3.select('.saved-list').append('li')
+        .style("left", d3.event.pageX + "px")
+        .style("top", d3.event.pageY - 150 + "px")
+        .style("opacity", 1)
+        .style("display", "inline-block")
+        .attr("class", "data-list")
+        .html("<h3> " + (d.naam) + "</h3>" +
+          "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+          "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+          "<hr>" +
+          "<h4> Soort zorg </h4>" +
+          "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+          "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+          "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+          "<hr>" +
+          "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+          "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+          "<span>Winst :</span>   " + (d.winst) + "<br>" +
+          "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+          "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+          "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+          "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+          "<div class='remove-list'>close</div>"
+
+        );
+      closeButtons = document.querySelectorAll('.remove-list');
+      console.log(closeButtons)
+      if (closeButtons) {
+        console.log('click-me')
+        for (var i = 0; i < closeButtons.length; i++) {
+          closeButtons[i].addEventListener('click', function () {
+            console.dir(this);
+            this.parentElement.remove();
+          })
+        }
+      }
     });
+
+
 
   points.transition()
     .duration(500)
@@ -307,8 +347,45 @@ function scotterPlot(data) {
             );
           points.style("opacity", .2)
           this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
-        });
+        })
+        .on("click", function (d) {
+          d3.select('.saved-list').append('li')
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .attr("class", "data-list")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+              "<div class='remove-list'>close</div>"
 
+            );
+          closeButtons = document.querySelectorAll('.remove-list');
+          console.log(closeButtons)
+          if (closeButtons) {
+            console.log('click-me')
+            for (var i = 0; i < closeButtons.length; i++) {
+              closeButtons[i].addEventListener('click', function () {
+                console.dir(this);
+                this.parentElement.remove();
+              })
+            }
+          }
+        });
       points.transition()
         .duration(500)
         .attr("cy", d => yScale(yValue(d)))
@@ -453,6 +530,44 @@ function scotterPlot(data) {
             );
           points.style("opacity", .2)
           this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        })
+        .on("click", function (d) {
+          d3.select('.saved-list').append('li')
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .attr("class", "data-list")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+              "<div class='remove-list'>close</div>"
+
+            );
+          closeButtons = document.querySelectorAll('.remove-list');
+          console.log(closeButtons)
+          if (closeButtons) {
+            console.log('click-me')
+            for (var i = 0; i < closeButtons.length; i++) {
+              closeButtons[i].addEventListener('click', function () {
+                console.dir(this);
+                this.parentElement.remove();
+              })
+            }
+          }
         });
 
       points.transition()
@@ -561,9 +676,7 @@ function scotterPlot(data) {
             return 0
           } else if (typeof d.winst != "number") {
             return 0
-        } else if (typeof d.omzet == null) {
-            return 0
-          }
+          };
         })
         // .attr("cy", d => yScale(yValue(d)))
         // .attr("cx", d => xScale(xValue(d)))
@@ -571,9 +684,7 @@ function scotterPlot(data) {
         // .on("mouseleave", function (d) {
         //   tooltip
         //     .style("opacity", 0)
-        //else if (typeof d.winst != "number") {
-        //   return 0
-        // }
+        //
         //     points.style("opacity", 1)
         //     this.setAttribute("style", "opacity: 1; stroke-width: 0; stroke: black; transition: ease all .5s")
         //
@@ -604,6 +715,44 @@ function scotterPlot(data) {
             );
           points.style("opacity", .2)
           this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
+        })
+        .on("click", function (d) {
+          d3.select('.saved-list').append('li')
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 150 + "px")
+            .style("opacity", 1)
+            .style("display", "inline-block")
+            .attr("class", "data-list")
+            .html("<h3> " + (d.naam) + "</h3>" +
+              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+              "<hr>" +
+              "<h4> Soort zorg </h4>" +
+              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+              "<hr>" +
+              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + (d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+              "<div class='remove-list'>close</div>"
+
+            );
+          closeButtons = document.querySelectorAll('.remove-list');
+          console.log(closeButtons)
+          if (closeButtons) {
+            console.log('click-me')
+            for (var i = 0; i < closeButtons.length; i++) {
+              closeButtons[i].addEventListener('click', function () {
+                console.dir(this);
+                this.parentElement.remove();
+              })
+            }
+          }
         });
 
       points.transition()

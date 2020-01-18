@@ -136,6 +136,7 @@ svg {
 }
 
 circle {
+  cursor: pointer;
   opacity: 1;
 }
 circle.bg-one {
@@ -257,6 +258,20 @@ circle.bg-seven {
 }
 .legenda span.thuiszorg {
   background: #1beaae;
+}
+
+.saved-list {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.saved-list h2 {
+  margin-top: 1em;
+}
+.saved-list li {
+  width: 100%;
+  border-bottom: 2px solid black;
+  margin-bottom: 1em;
 }
 
 /*# sourceMappingURL=/styles.164d45a1.css.map */
