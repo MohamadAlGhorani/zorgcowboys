@@ -2,64 +2,47 @@
 
 This project is about a datavis made in D3.
 
-## Building and running on localhost
+# Het concept
+* Naam: bubblelishes 
+* Doelgroep: Pointer
+* Doel van het concept: Overzicht krijgen van de data van de zorginstellingen op een exploratieve manier
 
-First install dependencies:
+## Features 
+* Giving information on hover 
+* Make your own list with zorgbedrijven just click on the company point 
+* Dynamic Axis menus from the data 
+* Axis are changable 
+* You can zoom in and out on the scatterplot
+* Year slider
 
-```sh
-npm install
-```
+## API reference
+https://data.overheid.nl
 
-To run in hot module reloading mode:
+## Installation and running localhost
 
-```sh
-npm start
-```
+These instructions will get you a copy of the project up and running on your local machine.
+* If you dont have node js on your device download it first from [here](https://nodejs.org/en/).
+* Download the project.
+* Open the terminal and navigate to the project folder and run ```npm install``` to install the node modules and dependencies. 
+* Run in your terminal ``` npm start ``` to open the project in your favorite browser localhost:1234.
 
+## Deployment
+I used Netlify te deploy my project more information about Netlify [click hier](https://www.netlify.com)
 
-## Running
-
-```sh
-node dist/bundle.js
-```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/42bd8b6f-1840-4e4f-84a7-67689e8b0672/deploy-status)](https://app.netlify.com/sites/zorgcowboys/deploys)
 
 ## Credits
 
-Made with [createapp.dev](https://createapp.dev/)
+Thanks to Pointer for sharing their project and knowledge about the problem. And thanks to my teachers and colleagues for their help and sharing their knowledge. Thanks to Aleereza for the [example](https://bl.ocks.org/aleereza/d2be3d62a09360a770b79f4e5527eea8).
 
-```javascript
-// ...
-150: {...},
-151: {
-        "concerncode": "YAZ7UUHPFR",
-        "bedrijfsnaam": "Yorneo (Stichting)",
-        "plaats": "ASSEN",
-        "zorgSoort": 1,
-        "jaren": {
-            "key": 2011,
-            "values": {
-                bedrijfsnaam: "Zorggroep Tangenborgh"
-                plaats: "EMMEN"
-                omzet: 71554044
-                winst: 1644296
-                personeelskostentotaal: 47210273
-                fte: "NA"
-                perc_winst: 2.3
-                perc_loon: 66
-                omzet_fte: "NA"
-                }
-           },
-           {
-           "key": 2012,
-            "values": {...}
-           },
-           {
-           "key": 2013,
-            "values": {...}
-           }
-        }
-},
-152: {...},
-153: {...},
-// ...
-```
+## Authors
+
+**Mohamad Al Ghorani**
+
+**Wiebe Kremer**
+
+## License
+
+Code is [MIT](https://github.com/MohamadAlGhorani/zorgcowboys/blob/master/LICENSE)
+
+
