@@ -1,5 +1,8 @@
 # Pointer - Buitenbeentjes
 
+<img width="1280" alt="Screenshot 2020-01-20 at 15 31 30" src="https://user-images.githubusercontent.com/45425087/72734436-f4b8ac80-3b99-11ea-93af-be9eda940bf3.png">
+
+
 This project is about a datavis made in D3.
 
 # Het concept
