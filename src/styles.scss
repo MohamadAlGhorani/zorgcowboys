@@ -213,6 +213,39 @@ circle {
     pointer-events: none;
     max-width: 300px;
 
+    .legenda-one::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $rood;
+    }
+
+    .legenda-two::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $geel;
+    }
+
+    .legenda-three::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $licht-blauw;
+    }
+
     h3 {
         text-align: center;
         font-family: 'zilla_slabsemibold';
@@ -356,7 +389,38 @@ circle {
     justify-content: space-evenly;
     flex-wrap: wrap;
 
+    .legenda-one::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $rood;
+    }
 
+    .legenda-two::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $geel;
+    }
+
+    .legenda-three::before {
+        content: "";
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        display: inline-block;
+        background: $licht-blauw;
+    }
 
     h2 {
         font-family: 'zilla_slabsemibold';
@@ -391,7 +455,7 @@ circle {
     }
 
     li {
-        width: 45%;
+        width: 30%;
         border-bottom: 2px solid black;
         margin-bottom: 1em;
         background: $text-color;
@@ -399,6 +463,11 @@ circle {
         padding: 5px 20px 20px;
         color: white;
         position: relative;
+        font-family: "tenso_boldregular";
+    }
+
+    span {
+        font-family: "tenso_regularregular";
     }
 
     .remove-list {
