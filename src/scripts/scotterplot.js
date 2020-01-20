@@ -798,6 +798,8 @@ function CommaFormatted(amount) {
     if (typeof amount === "number") {
         var result = amount.toLocaleString()
         return result.replace(/,/g, ".")
+    } else {
+        return "Niet beschikbaar voor 2017"
     }
 }
 

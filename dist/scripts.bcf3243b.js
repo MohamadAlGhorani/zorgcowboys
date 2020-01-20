@@ -8749,6 +8749,8 @@ function CommaFormatted(amount) {
   if (typeof amount === "number") {
     var result = amount.toLocaleString();
     return result.replace(/,/g, ".");
+  } else {
+    return "Niet beschikbaar voor 2017";
   }
 }
 },{"./dropDownMenu.js":"scripts/dropDownMenu.js","./yearSlider.js":"scripts/yearSlider.js"}],"scripts/cleaning.js":[function(require,module,exports) {
@@ -8996,7 +8998,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61604" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
