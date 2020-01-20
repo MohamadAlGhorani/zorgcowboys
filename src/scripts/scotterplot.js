@@ -143,10 +143,11 @@ function scotterPlot(data) {
           "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
           "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
           "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-          "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-          "<span>Winst :</span>   " + (d.winst) + "<br>" +
-          "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-          "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+          "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+          "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+          "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+          "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+          "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
           "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
           "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
@@ -158,23 +159,23 @@ function scotterPlot(data) {
     .on("click", function (d) {
       d3.select('.saved-list').append('li')
 
-        .style("opacity", 1)
-        .style("display", "inline-block")
-        .attr("class", "data-list")
-        .html("<h3> " + (d.naam) + "</h3>" +
-          "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
-          "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-          "<h4> Soort zorg </h4>" +
-          "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-          "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-          "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-          "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-          "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-          "<span>Winst :</span>   " + (d.winst) + "<br>" +
-          "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-          "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
-          "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
-          "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+      .style("opacity", 1)
+      .style("display", "inline-block")
+      .html("<h3> " + (d.naam) + "</h3>" +
+        "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+        "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+        "<h4> Soort zorg </h4>" +
+        "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+        "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+        "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+        "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+        "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+        "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+        "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+        "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+        "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
+        "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+        "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
           "<div class='remove-list'></div>"
 
         );
@@ -334,10 +335,11 @@ function scotterPlot(data) {
               "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
               "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+              "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
@@ -350,7 +352,6 @@ function scotterPlot(data) {
 
             .style("opacity", 1)
             .style("display", "inline-block")
-            .attr("class", "data-list")
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
@@ -359,10 +360,11 @@ function scotterPlot(data) {
               "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
               "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+              "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
@@ -516,13 +518,13 @@ function scotterPlot(data) {
               "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
               "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+              "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
-
             );
           points.style("opacity", .2)
           this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black; transition: ease all .5s")
@@ -532,7 +534,6 @@ function scotterPlot(data) {
 
             .style("opacity", 1)
             .style("display", "inline-block")
-            .attr("class", "data-list")
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
@@ -541,10 +542,11 @@ function scotterPlot(data) {
               "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
               "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+              "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
@@ -700,10 +702,11 @@ function scotterPlot(data) {
               "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
               "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
+              "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+              "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+              "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+              "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+              "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
@@ -713,23 +716,23 @@ function scotterPlot(data) {
         })
         .on("click", function (d) {
           d3.select('.saved-list').append('li')
-            .style("opacity", 1)
-            .style("display", "inline-block")
-            .attr("class", "data-list")
-            .html("<h3> " + (d.naam) + "</h3>" +
-              "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
-              "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<h4> Soort zorg </h4>" +
-              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
-              "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
-              "<span>Winst :</span>   " + (d.winst) + "<br>" +
-              "<span>Personeelskosten :</span>   " + (d.personeelskosten) + "<br>" +
-              "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
-              "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
+          .style("opacity", 1)
+          .style("display", "inline-block")
+          .html("<h3> " + (d.naam) + "</h3>" +
+            "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
+            "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
+            "<h4> Soort zorg </h4>" +
+            "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+            "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+            "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
+            "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
+            "<span>Omzet :</span>   " + CommaFormatted(d.omzet) + "<br>" +
+            "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" +
+            "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
+            "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
+            "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
+            "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+            "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
 
             );
@@ -790,6 +793,13 @@ function scotterPlot(data) {
   }
 }
 
+
+function CommaFormatted(amount) {
+    if (typeof amount === "number") {
+        var result = amount.toLocaleString()
+        return result.replace(/,/g, ".")
+    }
+}
 
 export {
   scotterPlot
