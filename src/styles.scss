@@ -521,8 +521,19 @@ input[type=range]:focus::-ms-fill-upper {
 
 .reset {
     position: absolute;
-    right: 2.2rem;
+    right: 1rem;
     top: 4rem;
-    width: 50px;
+    padding-left: 15px;
+    width: 80px;
+    height: 30px;
     pointer-events: all;
+    background-color: $text-color;
+    color: $licht-blauw;
+    border-color: $licht-blauw;
+    border-radius: 5px;
+    background-image: url("assets/images/search.png");
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+
 }

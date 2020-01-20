@@ -7,7 +7,16 @@ export function genOptionsForDropdownMenu(data, menuClass) {
         .data(checkKeys(data))
         .enter().append('option')
         .attr('value', d => d)
-        .text(d => d);
+        .text((d) => {
+
+
+            if (d == "omzet" || d == "winst" || d == "personeelskosten") {
+                return d + " €"
+            } else {
+                return d + " %"
+            };
+
+        });
 
     return selectMenu
 }
