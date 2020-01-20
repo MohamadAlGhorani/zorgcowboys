@@ -402,6 +402,7 @@ circle.bg-seven {
 }
 .saved-list span {
   font-family: "tenso_regularregular";
+  margin-right: 10px;
 }
 .saved-list .remove-list {
   position: absolute;
