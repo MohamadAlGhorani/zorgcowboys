@@ -8400,6 +8400,9 @@ function scotterPlot(data) {
     });
   }
 
+  var resetButton = d3.select('.reset').on("click", function () {
+    zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+  });
   slider.addEventListener('change', changeValues());
   xMenu.addEventListener('change', changeValues());
   yMenu.addEventListener('change', changeValues());
@@ -8508,6 +8511,10 @@ function scotterPlot(data) {
           return new_xScale(xValue(d));
         });
       }
+
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      });
     });
     xMenu.addEventListener('change', function () {
       var slider = document.querySelector('.slider');
@@ -8612,6 +8619,10 @@ function scotterPlot(data) {
           return new_xScale(xValue(d));
         });
       }
+
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      });
     });
     yMenu.addEventListener('change', function () {
       var slider = document.querySelector('.slider');
@@ -8716,6 +8727,10 @@ function scotterPlot(data) {
           return new_xScale(xValue(d));
         });
       }
+
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      });
     });
   }
 }
@@ -8964,7 +8979,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56358" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61604" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -234,6 +234,10 @@ function scotterPlot(data) {
       .attr("cy", d => new_yScale(yValue(d)))
       .attr("cx", d => new_xScale(xValue(d)))
   }
+  var resetButton = d3.select('.reset').on("click", function () {
+    zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+  })
+
   slider.addEventListener('change', changeValues());
   xMenu.addEventListener('change', changeValues());
   yMenu.addEventListener('change', changeValues());
@@ -421,6 +425,10 @@ function scotterPlot(data) {
           .attr("cx", d => new_xScale(xValue(d)))
       }
 
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      })
+
     })
     xMenu.addEventListener('change', function () {
       var slider = document.querySelector('.slider');
@@ -604,6 +612,10 @@ function scotterPlot(data) {
           .attr("cy", d => new_yScale(yValue(d)))
           .attr("cx", d => new_xScale(xValue(d)))
       }
+
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      })
 
 
     })
@@ -790,6 +802,10 @@ function scotterPlot(data) {
           .attr("cy", d => new_yScale(yValue(d)))
           .attr("cx", d => new_xScale(xValue(d)))
       }
+
+      var resetButton = d3.select('.reset').on("click", function () {
+        zoom.transform(pointgroup, d3.zoomIdentity.scale(1));
+      })
 
     })
   }
