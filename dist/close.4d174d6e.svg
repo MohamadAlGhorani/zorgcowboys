@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="28px" viewBox="0 0 27 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Group 16</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pointer-[V5.5]" transform="translate(-882.000000, -232.000000)" fill="#F65645">
+            <g id="Group-3" transform="translate(207.000000, 221.000000)">
+                <g id="Group-16" transform="translate(688.000000, 25.000000) rotate(45.000000) translate(-688.000000, -25.000000) translate(671.000000, 8.000000)">
+                    <path d="M16.4185245,0.081475452 L18.4185245,0.081475452 C20.0753788,0.081475452 21.4185245,1.4246212 21.4185245,3.08147545 L21.4185245,30.0814755 C21.4185245,31.7383297 20.0753788,33.0814755 18.4185245,33.0814755 L16.4185245,33.0814755 C14.7616703,33.0814755 13.4185245,31.7383297 13.4185245,30.0814755 L13.4185245,3.08147545 C13.4185245,1.4246212 14.7616703,0.081475452 16.4185245,0.081475452 Z" id="Rectangle" transform="translate(17.418525, 16.581475) rotate(90.000000) translate(-17.418525, -16.581475) "></path>
+                    <rect id="Rectangle" x="13.4185245" y="0.081475452" width="8" height="33" rx="3"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

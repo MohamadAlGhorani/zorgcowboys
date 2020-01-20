@@ -190,11 +190,11 @@ circle {
     }
 
     &.bg-six {
-        fill: lightgreen;
+        fill: rgb(253, 191, 111);
     }
 
     &.bg-seven {
-        fill: lightpink;
+        fill: rgb(177, 89, 40);
     }
 }
 
@@ -313,15 +313,158 @@ circle {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+
 
     h2 {
-        margin-top: 1em;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 100%;
+        text-align: center;
+    }
+
+    h3 {
+        color: $licht-blauw;
+        margin-bottom: 20px;
+        font-size: 25px;
+        font-family: 'zilla_slabbold';
+        height: 60px;
+        width: 95%;
+        overflow-y: hidden;
+
+        &:first-of-type {
+            margin-top: 10px;
+        }
+    }
+
+    h4 {
+        border-top: 1px solid $licht-blauw;
+        margin-top: 40px;
+        color: $licht-blauw;
+        padding-top: 10px;
+        margin-bottom: 20px;
+        font-family: 'zilla_slabsemibold';
+        font-size: 20px;
     }
 
     li {
-        width: 100%;
+        width: 45%;
         border-bottom: 2px solid black;
         margin-bottom: 1em;
-
+        background: $text-color;
+        border-radius: 20px;
+        padding: 5px 20px 20px;
+        color: white;
+        position: relative;
     }
+
+    .remove-list {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        display: block;
+        height: 40px;
+        width: 40px;
+        background: url("assets/images/close.svg");
+        background-position:center;
+        background-repeat: no-repeat;
+        cursor: pointer
+    }
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    margin: 0 auto;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.41875em;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: #1BEAAE;
+    border-radius: 1.5625em;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
+    border: 2.7px solid #000000;
+    height: 1.4375em;
+    width: 1.4375em;
+    border-radius: .75em;
+    background: #000000;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -0.584375em;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #1BEAAE;
+}
+input[type=range]::-moz-range-track {
+    width: 90%;
+    height: 0.41875em;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: #1BEAAE;
+    border-radius: 1.5625em;
+    border: 1.2px solid rgba(0, 0, 0, 0.25);
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
+    border: 2.7px solid #1BEAAE;
+    height: 1.4375em;
+    width: 1.4375em;
+    border-radius: .75em;
+    background: #982682;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 90%;
+    height: 0.41875em;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #808080;
+    border: 1.2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+    background: #1BEAAE;
+    border: 1.2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3.125em;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
+    border: 2.7px solid #1BEAAE;
+    height: 1.4375em;
+    width: 1.4375em;
+    border-radius: 12px;
+    background: #982682;
+    cursor: pointer;
+    height: 0.41875em;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #1BEAAE;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #1BEAAE;
+}
+.group-input {
+    display: flex;
+    width: 400px;
+    margin: 0 auto;
+}
+input {
+    background-color: transparent;
 }
