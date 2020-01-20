@@ -138,12 +138,10 @@ function scotterPlot(data) {
         .html("<h3> " + (d.naam) + "</h3>" +
           "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
           "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-          "<hr>" +
           "<h4> Soort zorg </h4>" +
-          "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-          "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-          "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-          "<hr>" +
+          "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+          "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+          "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
           "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
           "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
           "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -159,20 +157,17 @@ function scotterPlot(data) {
     })
     .on("click", function (d) {
       d3.select('.saved-list').append('li')
-        .style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY - 150 + "px")
+
         .style("opacity", 1)
         .style("display", "inline-block")
         .attr("class", "data-list")
         .html("<h3> " + (d.naam) + "</h3>" +
           "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
           "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-          "<hr>" +
           "<h4> Soort zorg </h4>" +
-          "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-          "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-          "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-          "<hr>" +
+          "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+          "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+          "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
           "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
           "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
           "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -180,7 +175,7 @@ function scotterPlot(data) {
           "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
           "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
           "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
-          "<div class='remove-list'>close</div>"
+          "<div class='remove-list'></div>"
 
         );
       closeButtons = document.querySelectorAll('.remove-list');
@@ -334,12 +329,10 @@ function scotterPlot(data) {
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -354,20 +347,17 @@ function scotterPlot(data) {
         })
         .on("click", function (d) {
           d3.select('.saved-list').append('li')
-            .style("left", d3.event.pageX + "px")
-            .style("top", d3.event.pageY - 150 + "px")
+
             .style("opacity", 1)
             .style("display", "inline-block")
             .attr("class", "data-list")
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -375,7 +365,7 @@ function scotterPlot(data) {
               "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
-              "<div class='remove-list'>close</div>"
+              "<div class='remove-list'></div>"
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
@@ -521,12 +511,10 @@ function scotterPlot(data) {
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -541,20 +529,17 @@ function scotterPlot(data) {
         })
         .on("click", function (d) {
           d3.select('.saved-list').append('li')
-            .style("left", d3.event.pageX + "px")
-            .style("top", d3.event.pageY - 150 + "px")
+
             .style("opacity", 1)
             .style("display", "inline-block")
             .attr("class", "data-list")
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -562,7 +547,7 @@ function scotterPlot(data) {
               "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
-              "<div class='remove-list'>close</div>"
+              "<div class='remove-list'></div>"
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
@@ -710,12 +695,10 @@ function scotterPlot(data) {
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -730,20 +713,16 @@ function scotterPlot(data) {
         })
         .on("click", function (d) {
           d3.select('.saved-list').append('li')
-            .style("left", d3.event.pageX + "px")
-            .style("top", d3.event.pageY - 150 + "px")
             .style("opacity", 1)
             .style("display", "inline-block")
             .attr("class", "data-list")
             .html("<h3> " + (d.naam) + "</h3>" +
               "<span>Plaats :</span>   " + (d.plaats) + "<br>" +
               "<span>Concerncode :</span>   " + (d.concerncode) + "<br>" +
-              "<hr>" +
               "<h4> Soort zorg </h4>" +
-              "<span>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
-              "<span>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
-              "<span>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
-              "<hr>" +
+              "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + (d.gehandicapten) + "<br>" +
+              "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + (d.geestelijk) + "<br>" +
+              "<span class='legenda-three'>Thuiszorg :</span>   " + (d.thuiszorg) + "<br>" +
               "<h4> Cijfers uit   " + (d.jaar) + "</h4>" +
               "<span>Omzet :</span>   " + (d.omzet) + "<br>" +
               "<span>Winst :</span>   " + (d.winst) + "<br>" +
@@ -751,7 +730,7 @@ function scotterPlot(data) {
               "<span>Omzet per FTE :</span>   " + (d.omzet_fte) + "<br>" +
               "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
-              "<div class='remove-list'>close</div>"
+              "<div class='remove-list'></div>"
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
