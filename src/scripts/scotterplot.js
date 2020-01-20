@@ -805,6 +805,7 @@ function CommaFormatted(amount) {
 
 function checkSafezone(data) {
     if (data >= 4) {
+        console.log("Zorgpiraat!")
         return "<span class='red'>" + data + "%</span>"
     } else {
         return data + "%"
