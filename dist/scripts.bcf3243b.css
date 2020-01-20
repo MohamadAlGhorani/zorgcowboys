@@ -240,23 +240,46 @@ circle.bg-seven {
   transform: scale(0.7) translateY(-50%);
   top: 45%;
 }
+.legenda p {
+  margin-bottom: 5px;
+}
 .legenda h5 {
   font-size: 1.6em;
+  margin-bottom: 10px;
 }
 .legenda span {
+  display: inline-block;
+  padding-left: 3px;
+}
+.legenda .one-label {
+  vertical-align: middle;
+}
+.legenda .ball {
   width: 25px;
   height: 25px;
   border-radius: 20px;
   display: inline-block;
 }
-.legenda span.geestelijk {
+.legenda .ball.geestelijk {
   background: #faff2e;
 }
-.legenda span.gehandicapten {
+.legenda .ball.gehandicapten {
   background: #f65645;
 }
-.legenda span.thuiszorg {
+.legenda .ball.thuiszorg {
   background: #1beaae;
+}
+.legenda .ball.thuiszorg-gehandicapten {
+  background: #fdbf6f;
+}
+.legenda .ball.thuiszorg-geestelijk {
+  background: lightblue;
+}
+.legenda .ball.geestelijk-gehandicapten {
+  background: #6b38e8;
+}
+.legenda .ball.alles {
+  background: #b15928;
 }
 
 .saved-list {
@@ -415,6 +438,9 @@ input[type=range]:focus::-ms-fill-upper {
   background: #1BEAAE;
 }
 
+.slider-container .year-label {
+  font-family: "zilla_slabsemibold";
+}
 .slider-container .group-input {
   display: flex;
   width: 400px;

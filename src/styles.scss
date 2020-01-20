@@ -284,11 +284,25 @@ circle {
     transform: scale(.7) translateY(-50%);
     top: 45%;
 
+    p {
+        margin-bottom: 5px;
+    }
+
     h5 {
         font-size: 1.6em;
+        margin-bottom: 10px;
     }
 
     span {
+        display: inline-block;
+        padding-left: 3px;
+    }
+
+    .one-label {
+        vertical-align: middle;
+    }
+
+    .ball {
         width: 25px;
         height: 25px;
         border-radius: 20px;
@@ -304,6 +318,22 @@ circle {
 
         &.thuiszorg {
             background: $licht-blauw;
+        }
+
+        &.thuiszorg-gehandicapten {
+            background: rgb(253, 191, 111);
+        }
+
+        &.thuiszorg-geestelijk {
+            background: lightblue;
+        }
+
+        &.geestelijk-gehandicapten {
+            background: $paars;
+        }
+
+        &.alles {
+            background: rgb(177, 89, 40);
         }
     }
 }
@@ -473,6 +503,10 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .slider-container {
+    .year-label {
+        font-family: 'zilla_slabsemibold';
+    }
+
     .group-input {
         display: flex;
         width: 400px;
