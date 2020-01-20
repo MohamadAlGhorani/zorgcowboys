@@ -3,7 +3,7 @@
 This project is about a datavis made in D3.
 
 # Het concept
-* Naam: bubblelishes 
+* Naam: Buitenbeentjes
 * Doelgroep: Pointer
 * Doel van het concept: Overzicht krijgen van de data van de zorginstellingen op een exploratieve manier
 
