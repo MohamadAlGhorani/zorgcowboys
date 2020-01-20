@@ -7,14 +7,20 @@ export function genYearSlider(data, sliderClass) {
         .append("div")
         .attr("class", "slider-container");
 
+    var theLabel = groupSlider.append('p').attr('class', 'year-label').text("Jaar")
+    var groupInput = groupSlider.append('div').attr('class', 'group-input');
+    var firstYear = groupInput.append('p').attr('class', 'first-year').text(jaaren[0])
+
     var yearSlider =
-        groupSlider
+        groupInput
         .append("input")
         .attr("class", sliderClass)
         .attr("type", "range")
         .attr("min", "0")
         .attr("max", data.length - 1)
         .attr("value", 0);
+
+    var lastYear = groupInput.append('p').attr('class', 'last-year').text(jaaren[jaaren.length - 1])
 
     var sliderValue = document.querySelector('.slider').value
 
