@@ -7,7 +7,7 @@ import {
 } from './yearSlider.js'
 
 var margin = {
-    top: 40,
+    top: 60,
     right: 100,
     bottom: 30,
     left: 100

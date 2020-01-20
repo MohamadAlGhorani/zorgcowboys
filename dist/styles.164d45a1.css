@@ -92,17 +92,16 @@ h2 {
 }
 
 header {
-  background-color: #e6e6e6;
+  background-color: #d8cedb;
   display: flex;
   height: 55px;
 }
 header .logo {
-  background-color: #d8cedb;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 10%;
-  font-size: 30px;
+  margin-left: 5%;
 }
 header .right-header {
   display: flex;
@@ -273,7 +272,7 @@ circle.bg-seven {
   margin-top: 20px;
   margin-bottom: 30px;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 .saved-list h3 {
   color: #1beaae;
@@ -416,14 +415,20 @@ input[type=range]:focus::-ms-fill-upper {
   background: #1BEAAE;
 }
 
-.group-input {
+.slider-container .group-input {
   display: flex;
   width: 400px;
   margin: 0 auto;
 }
-
-input {
+.slider-container input {
   background-color: transparent;
+}
+
+.reset {
+  position: absolute;
+  right: 8.2rem;
+  top: 4rem;
+  width: 50px;
 }
 
 /*# sourceMappingURL=/styles.164d45a1.css.map */

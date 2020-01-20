@@ -8289,7 +8289,7 @@ var _dropDownMenu = require("./dropDownMenu.js");
 var _yearSlider = require("./yearSlider.js");
 
 var margin = {
-  top: 40,
+  top: 60,
   right: 100,
   bottom: 30,
   left: 100
@@ -8983,7 +8983,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50094" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61604" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

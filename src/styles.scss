@@ -114,17 +114,16 @@ h2 {
 
 
 header {
-    background-color: $grijs;
+    background-color: $licht-paars;
     display: flex;
     height: 55px;
 
     .logo {
-        background-color: $licht-paars;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 10%;
-        font-size: 30px;
+        margin-left: 5%;
     }
 
     .right-header {
@@ -324,7 +323,7 @@ circle {
         margin-top: 20px;
         margin-bottom: 30px;
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     h3 {
@@ -370,7 +369,7 @@ circle {
         height: 40px;
         width: 40px;
         background: url("assets/images/close.svg");
-        background-position:center;
+        background-position: center;
         background-repeat: no-repeat;
         cursor: pointer
     }
@@ -381,9 +380,11 @@ input[type=range] {
     width: 300px;
     margin: 0 auto;
 }
+
 input[type=range]:focus {
     outline: none;
 }
+
 input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 0.41875em;
@@ -392,6 +393,7 @@ input[type=range]::-webkit-slider-runnable-track {
     background: #1BEAAE;
     border-radius: 1.5625em;
 }
+
 input[type=range]::-webkit-slider-thumb {
     box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
     border: 2.7px solid #000000;
@@ -403,9 +405,11 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     margin-top: -0.584375em;
 }
+
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #1BEAAE;
 }
+
 input[type=range]::-moz-range-track {
     width: 90%;
     height: 0.41875em;
@@ -415,6 +419,7 @@ input[type=range]::-moz-range-track {
     border-radius: 1.5625em;
     border: 1.2px solid rgba(0, 0, 0, 0.25);
 }
+
 input[type=range]::-moz-range-thumb {
     box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
     border: 2.7px solid #1BEAAE;
@@ -424,6 +429,7 @@ input[type=range]::-moz-range-thumb {
     background: #982682;
     cursor: pointer;
 }
+
 input[type=range]::-ms-track {
     width: 90%;
     height: 0.41875em;
@@ -432,18 +438,21 @@ input[type=range]::-ms-track {
     border-color: transparent;
     color: transparent;
 }
+
 input[type=range]::-ms-fill-lower {
     background: #808080;
     border: 1.2px solid rgba(0, 0, 0, 0.25);
     border-radius: 50px;
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
+
 input[type=range]::-ms-fill-upper {
     background: #1BEAAE;
     border: 1.2px solid rgba(0, 0, 0, 0.25);
     border-radius: 3.125em;
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
+
 input[type=range]::-ms-thumb {
     box-shadow: 2.1px 2.1px 4.5px rgba(0, 0, 0, 0.46), 0px 0px 2.1px rgba(13, 13, 13, 0.46);
     border: 2.7px solid #1BEAAE;
@@ -454,17 +463,30 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
     height: 0.41875em;
 }
+
 input[type=range]:focus::-ms-fill-lower {
     background: #1BEAAE;
 }
+
 input[type=range]:focus::-ms-fill-upper {
     background: #1BEAAE;
 }
-.group-input {
-    display: flex;
-    width: 400px;
-    margin: 0 auto;
+
+.slider-container {
+    .group-input {
+        display: flex;
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    input {
+        background-color: transparent;
+    }
 }
-input {
-    background-color: transparent;
+
+.reset {
+    position: absolute;
+    right: 8.2rem;
+    top: 4rem;
+    width: 50px;
 }
