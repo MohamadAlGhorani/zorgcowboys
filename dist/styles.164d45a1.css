@@ -161,6 +161,8 @@ circle.bg-seven {
 }
 
 .toolTip {
+  font-family: "tenso_boldregular";
+  font-size: 12px;
   position: absolute;
   display: none;
   min-width: 80px;
