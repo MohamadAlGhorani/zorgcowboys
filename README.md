@@ -37,9 +37,11 @@ Thanks to Pointer for sharing their project and knowledge about the problem. And
 
 ## Authors
 
-**Mohamad Al Ghorani**
+* Developer: **Mohamad Al Ghorani**
 
-**Wiebe Kremer**
+* Developer: **Wiebe Kremer** 
+
+* Designer: **Bram Reitsma**
 
 ## License
 
