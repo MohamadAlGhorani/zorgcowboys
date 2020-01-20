@@ -545,4 +545,9 @@ input[type=range]:focus::-ms-fill-upper {
   cursor: pointer;
 }
 
+.red {
+  color: red !important;
+  font-family: "tenso_boldregular" !important;
+}
+
 /*# sourceMappingURL=/styles.164d45a1.css.map */

@@ -148,7 +148,7 @@ function scotterPlot(data) {
           "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
           "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
           "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-          "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+          "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
           "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
         );
@@ -174,7 +174,7 @@ function scotterPlot(data) {
         "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
         "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
         "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-        "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+        "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
         "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
           "<div class='remove-list'></div>"
 
@@ -340,7 +340,7 @@ function scotterPlot(data) {
               "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
               "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
               "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" + +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
             );
@@ -365,7 +365,7 @@ function scotterPlot(data) {
               "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
               "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
               "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
 
@@ -523,7 +523,7 @@ function scotterPlot(data) {
               "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
               "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
               "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
             );
           points.style("opacity", .2)
@@ -547,7 +547,7 @@ function scotterPlot(data) {
               "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
               "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
               "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
 
@@ -707,7 +707,7 @@ function scotterPlot(data) {
               "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
               "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
               "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-              "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+              "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
               "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>"
 
             );
@@ -731,7 +731,7 @@ function scotterPlot(data) {
             "<span>Personeelskosten :</span>   " + CommaFormatted(d.personeelskosten) + "<br>" +
             "<span>Omzet per FTE :</span>   " + CommaFormatted(d.omzet_fte) + "<br>" +
             "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" +
-            "<span>Winst percentage :</span>   " + (d.perc_winst) + "%<br>" +
+            "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst) + "<br>" +
             "<span>Loon percentage :</span>   " + (d.perc_loon) + "%<br>" +
               "<div class='remove-list'></div>"
 
@@ -800,6 +800,14 @@ function CommaFormatted(amount) {
         return result.replace(/,/g, ".")
     } else {
         return "Niet beschikbaar voor 2017"
+    }
+}
+
+function checkSafezone(data) {
+    if (data >= 4) {
+        return "<span class='red'>" + data + "%</span>"
+    } else {
+        return data + "%"
     }
 }
 
