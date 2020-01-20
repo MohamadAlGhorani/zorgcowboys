@@ -455,6 +455,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 2.2rem;
   top: 4rem;
   width: 50px;
+  pointer-events: all;
 }
 
 /*# sourceMappingURL=/styles.164d45a1.css.map */
