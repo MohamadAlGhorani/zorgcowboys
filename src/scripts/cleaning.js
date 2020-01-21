@@ -19,7 +19,7 @@ function clean(data) {
     var nestedData = nestDataFunc(data)
     var chartData = chartDataFunc(nestedData)
     var realChartData = testFunc(chartData)
-    console.log(realChartData)
+    // console.log(realChartData)
     scotterPlot(realChartData)
 
 }

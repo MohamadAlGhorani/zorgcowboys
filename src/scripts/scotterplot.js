@@ -16,7 +16,7 @@ var margin = {
   height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
-  console.log(data[0].entries);
+  // console.log(data[0].entries);
   var closeButtons;
   var sliderClass = "slider";
   genYearSlider(data, sliderClass)
@@ -180,12 +180,11 @@ function scotterPlot(data) {
 
         );
       closeButtons = document.querySelectorAll('.remove-list');
-      console.log(closeButtons)
+      // console.log(closeButtons)
       if (closeButtons) {
-        console.log('click-me')
         for (var i = 0; i < closeButtons.length; i++) {
           closeButtons[i].addEventListener('click', function () {
-            console.dir(this);
+            // console.dir(this);
             this.parentElement.remove();
           })
         }
@@ -244,8 +243,8 @@ function scotterPlot(data) {
       var xMenuValue = document.querySelector(".xMenu").value;
       var yMenuValue = document.querySelector(".yMenu").value;
 
-      console.log(yMenuValue)
-      console.log(xMenuValue)
+      // console.log(yMenuValue)
+      // console.log(xMenuValue)
 
       var yValue = d => d[yMenuValue];
       var xValue = d => d[xMenuValue];
@@ -371,12 +370,9 @@ function scotterPlot(data) {
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
-          console.log(closeButtons)
           if (closeButtons) {
-            console.log('click-me')
             for (var i = 0; i < closeButtons.length; i++) {
               closeButtons[i].addEventListener('click', function () {
-                console.dir(this);
                 this.parentElement.remove();
               })
             }
@@ -428,9 +424,6 @@ function scotterPlot(data) {
       var xMenuValue = document.querySelector(".xMenu").value;
       var yMenuValue = document.querySelector(".yMenu").value;
 
-      console.log(yMenuValue)
-      console.log(xMenuValue)
-
       var yValue = d => d[yMenuValue];
       var xValue = d => d[xMenuValue];
 
@@ -553,12 +546,9 @@ function scotterPlot(data) {
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
-          console.log(closeButtons)
           if (closeButtons) {
-            console.log('click-me')
             for (var i = 0; i < closeButtons.length; i++) {
               closeButtons[i].addEventListener('click', function () {
-                console.dir(this);
                 this.parentElement.remove();
               })
             }
@@ -612,8 +602,6 @@ function scotterPlot(data) {
       var xMenuValue = document.querySelector(".xMenu").value;
       var yMenuValue = document.querySelector(".yMenu").value;
 
-      console.log(yMenuValue)
-      console.log(xMenuValue)
 
       var yValue = d => d[yMenuValue];
       var xValue = d => d[xMenuValue];
@@ -737,12 +725,9 @@ function scotterPlot(data) {
 
             );
           closeButtons = document.querySelectorAll('.remove-list');
-          console.log(closeButtons)
           if (closeButtons) {
-            console.log('click-me')
             for (var i = 0; i < closeButtons.length; i++) {
               closeButtons[i].addEventListener('click', function () {
-                console.dir(this);
                 this.parentElement.remove();
               })
             }
@@ -810,7 +795,6 @@ function CommaFormatted(amount, check) {
 
 function checkSafezone(data, safezone) {
     if (data >= safezone) {
-        console.log("Zorgpiraat!")
         return "<span class='red'>" + data + "%</span>"
     } else {
         return data + "%"

@@ -8304,7 +8304,7 @@ var margin = {
     height = 500 - margin.top - margin.bottom;
 
 function scotterPlot(data) {
-  console.log(data[0].entries);
+  // console.log(data[0].entries);
   var closeButtons;
   var sliderClass = "slider";
   (0, _yearSlider.genYearSlider)(data, sliderClass);
@@ -8373,15 +8373,12 @@ function scotterPlot(data) {
     this.setAttribute("style", "opacity: 1; stroke-width: 3; stroke: black;");
   }).on("click", function (d) {
     d3.select('.saved-list').append('li').style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<h4> Soort zorg </h4>" + "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span class='legenda-three'>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>     " + CommaFormatted(d.omzet) + "<br>" + "<span>Winst :</span>     " + CommaFormatted(d.winst) + "<br>" + "<span>Personeelskosten :</span>     " + CommaFormatted(d.personeelskosten) + "<br>" + "<span>Omzet per FTE :</span>     " + CommaFormatted(d.omzet_fte, "fte") + "<br>" + "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" + "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst, 4) + "<br>" + "<span>Loon percentage :</span>   " + checkSafezone(d.perc_loon, 40) + "<br>" + "<div class='remove-list'></div>");
-    closeButtons = document.querySelectorAll('.remove-list');
-    console.log(closeButtons);
+    closeButtons = document.querySelectorAll('.remove-list'); // console.log(closeButtons)
 
     if (closeButtons) {
-      console.log('click-me');
-
       for (var i = 0; i < closeButtons.length; i++) {
         closeButtons[i].addEventListener('click', function () {
-          console.dir(this);
+          // console.dir(this);
           this.parentElement.remove();
         });
       }
@@ -8420,9 +8417,8 @@ function scotterPlot(data) {
   function changeValues() {
     slider.addEventListener('input', function () {
       var xMenuValue = document.querySelector(".xMenu").value;
-      var yMenuValue = document.querySelector(".yMenu").value;
-      console.log(yMenuValue);
-      console.log(xMenuValue);
+      var yMenuValue = document.querySelector(".yMenu").value; // console.log(yMenuValue)
+      // console.log(xMenuValue)
 
       var yValue = function yValue(d) {
         return d[yMenuValue];
@@ -8485,14 +8481,10 @@ function scotterPlot(data) {
       }).on("click", function (d) {
         d3.select('.saved-list').append('li').style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<h4> Soort zorg </h4>" + "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span class='legenda-three'>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>     " + CommaFormatted(d.omzet) + "<br>" + "<span>Winst :</span>     " + CommaFormatted(d.winst) + "<br>" + "<span>Personeelskosten :</span>     " + CommaFormatted(d.personeelskosten) + "<br>" + "<span>Omzet per FTE :</span>     " + CommaFormatted(d.omzet_fte, "fte") + "<br>" + "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" + "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst, 4) + "<br>" + "<span>Loon percentage :</span>   " + checkSafezone(d.perc_loon, 40) + "<br>" + "<div class='remove-list'></div>");
         closeButtons = document.querySelectorAll('.remove-list');
-        console.log(closeButtons);
 
         if (closeButtons) {
-          console.log('click-me');
-
           for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].addEventListener('click', function () {
-              console.dir(this);
               this.parentElement.remove();
             });
           }
@@ -8531,8 +8523,6 @@ function scotterPlot(data) {
       var sliderValue = slider.value;
       var xMenuValue = document.querySelector(".xMenu").value;
       var yMenuValue = document.querySelector(".yMenu").value;
-      console.log(yMenuValue);
-      console.log(xMenuValue);
 
       var yValue = function yValue(d) {
         return d[yMenuValue];
@@ -8593,14 +8583,10 @@ function scotterPlot(data) {
       }).on("click", function (d) {
         d3.select('.saved-list').append('li').style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<h4> Soort zorg </h4>" + "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span class='legenda-three'>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>     " + CommaFormatted(d.omzet) + "<br>" + "<span>Winst :</span>     " + CommaFormatted(d.winst) + "<br>" + "<span>Personeelskosten :</span>     " + CommaFormatted(d.personeelskosten) + "<br>" + "<span>Omzet per FTE :</span>     " + CommaFormatted(d.omzet_fte, "fte") + "<br>" + "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" + "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst, 4) + "<br>" + "<span>Loon percentage :</span>   " + checkSafezone(d.perc_loon, 40) + "<br>" + "<div class='remove-list'></div>");
         closeButtons = document.querySelectorAll('.remove-list');
-        console.log(closeButtons);
 
         if (closeButtons) {
-          console.log('click-me');
-
           for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].addEventListener('click', function () {
-              console.dir(this);
               this.parentElement.remove();
             });
           }
@@ -8639,8 +8625,6 @@ function scotterPlot(data) {
       var sliderValue = slider.value;
       var xMenuValue = document.querySelector(".xMenu").value;
       var yMenuValue = document.querySelector(".yMenu").value;
-      console.log(yMenuValue);
-      console.log(xMenuValue);
 
       var yValue = function yValue(d) {
         return d[yMenuValue];
@@ -8701,14 +8685,10 @@ function scotterPlot(data) {
       }).on("click", function (d) {
         d3.select('.saved-list').append('li').style("opacity", 1).style("display", "inline-block").html("<h3> " + d.naam + "</h3>" + "<span>Plaats :</span>   " + d.plaats + "<br>" + "<span>Concerncode :</span>   " + d.concerncode + "<br>" + "<h4> Soort zorg </h4>" + "<span class='legenda-one'>Gehandicaptenzorg :</span>   " + d.gehandicapten + "<br>" + "<span class='legenda-two'>Geestelijkegezondheidszorg :</span>   " + d.geestelijk + "<br>" + "<span class='legenda-three'>Thuiszorg :</span>   " + d.thuiszorg + "<br>" + "<h4> Cijfers uit   " + d.jaar + "</h4>" + "<span>Omzet :</span>    " + CommaFormatted(d.omzet) + "<br>" + "<span>Winst :</span>   " + CommaFormatted(d.winst) + "<br>" + "<span>Personeelskosten :</span>    " + CommaFormatted(d.personeelskosten) + "<br>" + "<span>Omzet per FTE :</span>    " + CommaFormatted(d.omzet_fte, "fte") + "<br>" + "<span>FTE :</span>   " + CommaFormatted(d.fte) + "<br>" + "<span>Winst percentage :</span>   " + checkSafezone(d.perc_winst, 4) + "<br>" + "<span>Loon percentage :</span>   " + checkSafezone(d.perc_loon, 40) + "<br>" + "<div class='remove-list'></div>");
         closeButtons = document.querySelectorAll('.remove-list');
-        console.log(closeButtons);
 
         if (closeButtons) {
-          console.log('click-me');
-
           for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].addEventListener('click', function () {
-              console.dir(this);
               this.parentElement.remove();
             });
           }
@@ -8761,7 +8741,6 @@ function CommaFormatted(amount, check) {
 
 function checkSafezone(data, safezone) {
   if (data >= safezone) {
-    console.log("Zorgpiraat!");
     return "<span class='red'>" + data + "%</span>";
   } else {
     return data + "%";
@@ -8793,8 +8772,8 @@ function clean(data) {
   cleanZorgInput(data);
   var nestedData = nestDataFunc(data);
   var chartData = chartDataFunc(nestedData);
-  var realChartData = testFunc(chartData);
-  console.log(realChartData);
+  var realChartData = testFunc(chartData); // console.log(realChartData)
+
   (0, _scotterplot.scotterPlot)(realChartData);
 }
 
@@ -8978,8 +8957,6 @@ require("../styles.scss");
 require("babel-polyfill");
 
 var _cleaning = require("./cleaning.js");
-
-console.log("Hello world");
 
 window.onbeforeunload = function () {
   return "Are you sure you want to leave?";
